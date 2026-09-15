@@ -972,15 +972,13 @@ async function initMaterials() {
 }
 
 if (typeof auth !== 'undefined') {
-    auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged(async (user) => {
 
         if (!user) {
             window.location.href = '../index.html';
             return;
         }
 
-        renderMaterials();
+        await initMaterials();
     });
 }
-
-initMaterials();
