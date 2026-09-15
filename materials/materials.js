@@ -145,9 +145,11 @@ function isCurrentUserAdmin() {
 
         authExists: typeof auth !== 'undefined',
 
-        currentUser: typeof auth !== 'undefined' && auth.currentUser
-            ? auth.currentUser.email
-            : 'НЕТ ПОЛЬЗОВАТЕЛЯ'
+        currentUser:
+            typeof auth !== 'undefined' &&
+            auth.currentUser
+                ? auth.currentUser.email
+                : 'НЕТ ПОЛЬЗОВАТЕЛЯ'
     });
 
     return (
@@ -971,14 +973,50 @@ async function initMaterials() {
     }
 }
 
+
+/* =================================
+   AUTHENTICATION PROTECTION
+================================= */
+
 if (typeof auth !== 'undefined') {
+
     auth.onAuthStateChanged(async (user) => {
 
+        /* USER IS NOT AUTHENTICATED */
+
         if (!user) {
-            window.location.href = '../index.html';
+
+            console.log(
+                'MATERIALS AUTH: НЕТ ПОЛЬЗОВАТЕЛЯ — REDIRECT'
+            );
+
+            window.location.replace(
+                '../index.html'
+            );
+
             return;
         }
 
+
+        /* USER IS AUTHENTICATED */
+
+        console.log(
+            'MATERIALS AUTH:',
+            user.email
+        );
+
         await initMaterials();
+
     });
+
+} else {
+
+    console.error(
+        'Firebase Auth не найден.'
+    );
+
+    window.location.replace(
+        '../index.html'
+    );
+
 }
