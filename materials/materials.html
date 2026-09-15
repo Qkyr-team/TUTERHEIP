@@ -397,15 +397,12 @@
     };
 
     firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-const ADMIN_EMAIL = "maksim896@icloud.com";
 
-auth.onAuthStateChanged((user) => {
-    console.log('MATERIALS AUTH:', user ? user.email : 'НЕТ ПОЛЬЗОВАТЕЛЯ');
-});
+    const auth = firebase.auth();
+    const ADMIN_EMAIL = "maksim896@icloud.com";
 </script>
 
 <script src="materials.js"></script>
-</body>
 
+</body>
 </html>
