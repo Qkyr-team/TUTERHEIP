@@ -31,7 +31,7 @@
     <div class="nav-right">
       <button id="themeToggleBtn" onclick="toggleTheme()" title="Светлая/тёмная тема"
         style="background:none;border:1px solid var(--border);border-radius:8px;padding:6px 10px;cursor:pointer;font-size:15px;color:var(--ink);">🌙</button>
-        <button class="primary" style="margin-top:0;padding:9px 18px;" onclick="ctaLogin()">Войти</button>
+      <button class="primary" style="margin-top:0;padding:9px 18px;" onclick="ctaLogin()">Войти</button>
     </div>
   </nav>
 
@@ -39,7 +39,7 @@
     ⚠ База данных не подключена.
   </div>
 
-  <!-- ROЛЬ + РЕГИСТРАЦИЯ: одно окно сразу под шапкой -->
+  <!-- РОЛЬ + РЕГИСТРАЦИЯ: одно окно сразу под шапкой -->
   <section id="view-home">
 
     <!-- HERO -->
@@ -215,6 +215,7 @@
 
       <!-- TEACHER: обязательный вход/регистрация -->
       <div id="homeTeacherPanel">
+
         <!-- Уже вошли — показываем это вместо формы входа -->
         <div id="teacherAlreadyLoggedIn" class="hidden">
           <h2>С возвращением!</h2>
@@ -241,8 +242,12 @@
           <button class="primary" id="authSubmitBtn" onclick="submitEmailAuth()">Войти</button>
 
           <p class="hint" id="authError"></p>
+
           <p class="hint" id="authSwitchWrap">
-            Нет аккаунта? <a href="#" onclick="toggleAuthMode(event)">Зарегистрироваться</a>
+            Нет аккаунта?
+            <a href="#" onclick="toggleAuthMode(event)">Зарегистрироваться</a>
+            <br>
+            <a href="#" onclick="resetPassword(event)">Забыли пароль?</a>
           </p>
         </div>
       </div>
@@ -253,17 +258,25 @@
           <button class="secondary" style="width:100%;" onclick="toggleStudentAuth()">
             Войти в аккаунт (по желанию) — чтобы видеть историю всех тестов и скачивать сертификаты
           </button>
+
           <div id="studentAuthForm" class="hidden" style="margin-top:16px;">
             <button class="secondary" style="width:100%;" onclick="signInWithGoogleStudent()">Войти через Google</button>
+
             <div style="text-align:center;color:var(--ink-dim);font-size:12.5px;margin:16px 0;">— или по email —</div>
+
             <label for="stuEmail">Email</label>
             <input type="text" id="stuEmail" placeholder="you@example.com">
+
             <label for="stuPassword">Пароль</label>
             <input type="password" id="stuPassword" placeholder="Минимум 6 символов">
+
             <button class="primary" id="stuAuthSubmitBtn" onclick="submitStudentEmailAuth()">Войти</button>
+
             <p class="hint" id="stuAuthError"></p>
+
             <p class="hint" id="stuAuthSwitchWrap">
-              Нет аккаунта? <a href="#" onclick="toggleStudentAuthMode(event)">Зарегистрироваться</a>
+              Нет аккаунта?
+              <a href="#" onclick="toggleStudentAuthMode(event)">Зарегистрироваться</a>
             </p>
           </div>
         </div>
@@ -273,41 +286,53 @@
             <span id="studentEmailLabel"></span>
             <button class="secondary small" onclick="signOutStudent()">Выйти</button>
           </div>
+
           <div id="homeVocabReminder" class="hidden" style="margin:12px 0;background:rgba(224,169,76,0.12);border:1px solid var(--accent);
             border-radius:8px;padding:12px 14px;font-size:13.5px;display:flex;justify-content:space-between;align-items:center;gap:10px;">
             <span id="homeVocabReminderText"></span>
             <button class="primary small" onclick="goVocabStudent()">Повторить</button>
           </div>
+
           <button class="secondary" style="width:100%;margin:12px 0;" onclick="goVocabStudent()">📚 Лексика</button>
+
           <div id="studentHistoryWrap"></div>
         </div>
 
         <h2 style="margin-top:22px;">Введите код</h2>
+
         <label for="sCode">Код от репетитора</label>
         <input type="text" id="sCode" placeholder="Например: 4F7K2Q" style="text-transform:uppercase;letter-spacing:2px;">
+
         <button class="primary" onclick="startTestByCode()">Начать тест</button>
+
         <p class="hint" id="sError"></p>
       </div>
     </div>
 
-    <p class="hint" style="text-align:center;margin-top:14px;">Результаты хранятся в общей базе данных (Firebase) — ученики могут проходить тест с любого компьютера, а вы увидите результат в своём кабинете.</p>
+    <p class="hint" style="text-align:center;margin-top:14px;">
+      Результаты хранятся в общей базе данных (Firebase) — ученики могут проходить тест с любого компьютера, а вы увидите результат в своём кабинете.
+    </p>
 
     <footer class="site-footer">
       <div>
         <b style="color:var(--ink);">TutorHelp</b> — платформа для репетиторов английского языка
       </div>
+
       <div>
         <a onclick="scrollToSection('aboutSection')">О проекте</a>
         <a href="mailto:maksim896@icloud.com" id="footerEmailLink">Обратная связь</a>
       </div>
     </footer>
+
   </section>
 
-  <!-- TEACHER DASHBOARD (виден только уже вошедшим репетиторам) -->
+  <!-- TEACHER DASHBOARD -->
   <section id="view-teacher" class="hidden">
+
     <button class="back-link" onclick="goHome()">← на главную</button>
 
     <div id="teacher-dashboard">
+
       <div class="user-bar">
         <span id="teacherEmailLabel"></span>
         <button class="secondary small" onclick="signOutTeacher()">Выйти</button>
@@ -319,44 +344,48 @@
       </div>
 
       <div id="teacher-tabs-and-panels" class="dash-layout">
-    <aside class="dash-sidebar">
 
-        <button class="dash-nav-item" data-tab="create" onclick="setTeacherTab('create')">
+        <aside class="dash-sidebar">
+
+          <button class="dash-nav-item" data-tab="create" onclick="setTeacherTab('create')">
             ➕ Создать код
-        </button>
+          </button>
 
-        <button class="dash-nav-item" data-tab="results" onclick="setTeacherTab('results')">
+          <button class="dash-nav-item" data-tab="results" onclick="setTeacherTab('results')">
             📊 Результаты
-        </button>
+          </button>
 
-        <button class="dash-nav-item" data-tab="certs" onclick="setTeacherTab('certs')">
+          <button class="dash-nav-item" data-tab="certs" onclick="setTeacherTab('certs')">
             📄 Выдать сертификат
-        </button>
+          </button>
 
-        <button class="dash-nav-item" data-tab="students" onclick="setTeacherTab('students')">
+          <button class="dash-nav-item" data-tab="students" onclick="setTeacherTab('students')">
             🎓 Мои ученики
-        </button>
+          </button>
 
-        <button class="dash-nav-item" data-tab="vocab" onclick="setTeacherTab('vocab')">
+          <button class="dash-nav-item" data-tab="vocab" onclick="setTeacherTab('vocab')">
             📚 Лексика
-        </button>
+          </button>
 
-        <button class="dash-nav-item" data-tab="materials" onclick="openMaterials()">
+          <button class="dash-nav-item" data-tab="materials" onclick="openMaterials()">
             📖 Материалы
-        </button>
+          </button>
 
-        <button class="dash-nav-item" data-tab="account" onclick="setTeacherTab('account')">
+          <button class="dash-nav-item" data-tab="account" onclick="setTeacherTab('account')">
             👤 Аккаунт
-        </button>
+          </button>
 
-        <button class="dash-nav-item hidden" data-tab="admin" id="adminTabBtn" onclick="setTeacherTab('admin')">
+          <button class="dash-nav-item hidden" data-tab="admin" id="adminTabBtn" onclick="setTeacherTab('admin')">
             👑 Админ
-        </button>
+          </button>
 
-    </aside>
+        </aside>
 
         <div class="dash-content">
-          <div class="breadcrumb">Главная <span>›</span> <span id="dashBreadcrumbCurrent">Создать код</span></div>
+
+          <div class="breadcrumb">
+            Главная <span>›</span> <span id="dashBreadcrumbCurrent">Создать код</span>
+          </div>
 
           <!-- Create code -->
           <div id="teacher-create">
@@ -364,7 +393,9 @@
             <p class="dash-subtitle">Выберите тест и сгенерируйте код доступа</p>
 
             <div class="create-grid">
+
               <div class="create-form">
+
                 <div class="step-card">
                   <div class="step-card-icon">📘</div>
                   <div class="step-card-body">
@@ -404,13 +435,22 @@
                 <div class="info-row" id="testInfoRow"></div>
 
                 <div id="teacherSectionPickerWrap" class="hidden">
+
                   <label>Разделы теста</label>
-                  <p class="step-hint">Выберите, какие разделы получит ученик по этому коду</p>
+
+                  <p class="step-hint">
+                    Выберите, какие разделы получит ученик по этому коду
+                  </p>
+
                   <div class="section-all-toggle">
                     <input type="checkbox" id="tAllSections" checked onchange="toggleAllTeacherSectionCards()">
-                    <label for="tAllSections" style="text-transform:none;font-size:13.5px;margin:0;">Все разделы</label>
+                    <label for="tAllSections" style="text-transform:none;font-size:13.5px;margin:0;">
+                      Все разделы
+                    </label>
                   </div>
+
                   <div class="section-cards" id="teacherSectionCardsWrap"></div>
+
                 </div>
 
                 <div class="step-card">
@@ -422,20 +462,26 @@
                   </div>
                 </div>
 
-                <button class="primary" style="width:100%;" onclick="createCode()">🔗 Сгенерировать код</button>
+                <button class="primary" style="width:100%;" onclick="createCode()">
+                  🔗 Сгенерировать код
+                </button>
 
                 <div id="codeResult" class="code-reveal hidden">
                   <div class="meta">Код доступа для ученика</div>
                   <div class="code" id="codeValue">—</div>
                   <div class="meta" id="codeMeta"></div>
                 </div>
+
               </div>
 
               <div class="create-summary">
                 <h4>Ваш тест для ученика</h4>
                 <div id="createSummaryWrap"></div>
-                <p class="summary-note">✅ После генерации кода отправьте его ученику для доступа к тесту</p>
+                <p class="summary-note">
+                  ✅ После генерации кода отправьте его ученику для доступа к тесту
+                </p>
               </div>
+
             </div>
           </div>
 
@@ -453,18 +499,28 @@
 
           <!-- Students -->
           <div id="teacher-students" class="hidden">
+
             <h2 class="dash-title">Мои ученики</h2>
-            <button class="primary" onclick="toggleStudentForm()">➕ Добавить ученика</button>
+
+            <button class="primary" onclick="toggleStudentForm()">
+              ➕ Добавить ученика
+            </button>
 
             <div id="studentFormWrap" class="panel hidden" style="margin-top:16px;">
-              <h3 id="studentFormTitle" style="font-family:var(--serif);margin:0 0 14px;">Новый ученик</h3>
+
+              <h3 id="studentFormTitle" style="font-family:var(--serif);margin:0 0 14px;">
+                Новый ученик
+              </h3>
 
               <label>Имя*</label>
               <input type="text" id="studentFirstName" placeholder="Александр">
+
               <label>Фамилия*</label>
               <input type="text" id="studentLastName" placeholder="Петров">
+
               <label>Класс</label>
               <input type="text" id="studentGrade" placeholder="Например: 7">
+
               <label>Родной язык</label>
               <input type="text" id="studentNativeLang" placeholder="Например: русский">
 
@@ -480,29 +536,48 @@
                 <option>Другое</option>
               </select>
 
-              <h4 style="font-family:var(--serif);font-size:14px;margin:18px 0 4px;">Контакты ученика</h4>
+              <h4 style="font-family:var(--serif);font-size:14px;margin:18px 0 4px;">
+                Контакты ученика
+              </h4>
+
               <label>Телефон</label>
               <input type="text" id="studentPhone" placeholder="+7 ...">
+
               <label>Email</label>
               <input type="text" id="studentEmail" placeholder="student@example.com">
 
-              <h4 style="font-family:var(--serif);font-size:14px;margin:18px 0 4px;">Контакты родителя</h4>
+              <h4 style="font-family:var(--serif);font-size:14px;margin:18px 0 4px;">
+                Контакты родителя
+              </h4>
+
               <label>Имя родителя</label>
               <input type="text" id="parentName" placeholder="Имя Фамилия">
+
               <label>Телефон родителя</label>
               <input type="text" id="parentPhone" placeholder="+7 ...">
+
               <label>Email родителя</label>
               <input type="text" id="parentEmail" placeholder="parent@example.com">
 
-              <h4 style="font-family:var(--serif);font-size:14px;margin:18px 0 4px;">Информация об обучении</h4>
+              <h4 style="font-family:var(--serif);font-size:14px;margin:18px 0 4px;">
+                Информация об обучении
+              </h4>
+
               <label>Текущий уровень</label>
               <select id="studentLevel">
                 <option value="">—</option>
-                <option>A0</option><option>A1</option><option>A2</option>
-                <option>B1</option><option>B2</option><option>C1</option><option>C2</option>
+                <option>A0</option>
+                <option>A1</option>
+                <option>A2</option>
+                <option>B1</option>
+                <option>B2</option>
+                <option>C1</option>
+                <option>C2</option>
               </select>
+
               <label>Учебник</label>
               <input type="text" id="studentTextbook" placeholder="Например: Speak out">
+
               <label>Частота занятий</label>
               <select id="studentFrequency">
                 <option value="">—</option>
@@ -511,55 +586,86 @@
                 <option>3 раза в неделю</option>
                 <option>Своя</option>
               </select>
+
               <label>Продолжительность урока</label>
               <select id="studentDuration">
                 <option value="">—</option>
-                <option>30 минут</option><option>45 минут</option><option>60 минут</option><option>90 минут</option>
+                <option>30 минут</option>
+                <option>45 минут</option>
+                <option>60 минут</option>
+                <option>90 минут</option>
               </select>
 
               <label>Заметки</label>
-              <textarea id="studentNotes" rows="4" placeholder="Например: часто путает времена, любит игровые задания…"
+              <textarea id="studentNotes" rows="4"
+                placeholder="Например: часто путает времена, любит игровые задания…"
                 style="width:100%;background:var(--bg);border:1px solid var(--border);color:var(--ink);border-radius:7px;padding:10px;font-family:var(--sans);font-size:14px;"></textarea>
 
               <div style="margin-top:16px;">
                 <button class="secondary" onclick="cancelStudentForm()">Отмена</button>
                 <button class="primary" onclick="saveStudentCard()">Сохранить ученика</button>
               </div>
+
               <p class="hint" id="studentFormError"></p>
+
             </div>
 
             <div id="studentCardsWrap" style="margin-top:20px;"></div>
+
           </div>
 
           <!-- Vocabulary -->
           <div id="teacher-vocab" class="hidden">
+
             <h2 class="dash-title">Лексика</h2>
-            <p class="dash-subtitle">Наборы слов для изучения. Создавать и редактировать их может только администратор — репетитор их только просматривает.</p>
+
+            <p class="dash-subtitle">
+              Наборы слов для изучения. Создавать и редактировать их может только администратор — репетитор их только просматривает.
+            </p>
 
             <div id="vocabAdminControls" class="hidden">
-              <button class="primary" onclick="toggleWordSetForm()">➕ Добавить набор слов</button>
+
+              <button class="primary" onclick="toggleWordSetForm()">
+                ➕ Добавить набор слов
+              </button>
 
               <div id="wordSetFormWrap" class="panel hidden" style="margin-top:16px;">
-                <h3 id="wordSetFormTitle" style="font-family:var(--serif);margin:0 0 14px;">Новый набор слов</h3>
+
+                <h3 id="wordSetFormTitle" style="font-family:var(--serif);margin:0 0 14px;">
+                  Новый набор слов
+                </h3>
+
                 <label>Название</label>
                 <input type="text" id="wsTitle" placeholder="Например: Еда и напитки">
+
                 <label>Уровень</label>
                 <select id="wsLevel">
                   <option value="">—</option>
-                  <option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option>
+                  <option>A1</option>
+                  <option>A2</option>
+                  <option>B1</option>
+                  <option>B2</option>
+                  <option>C1</option>
+                  <option>C2</option>
                 </select>
+
                 <label>Тема</label>
                 <input type="text" id="wsTopic" placeholder="Например: Food & Drinks">
+
                 <label>Описание (необязательно)</label>
                 <input type="text" id="wsDescription" placeholder="Краткое описание набора">
 
                 <label style="margin-top:14px;">Слова</label>
                 <div id="wsWordsWrap"></div>
-                <button class="secondary small" onclick="addWordRow()">+ Добавить слово</button>
+
+                <button class="secondary small" onclick="addWordRow()">
+                  + Добавить слово
+                </button>
 
                 <div style="margin-top:16px;">
                   <label style="display:inline-flex;align-items:center;gap:8px;text-transform:none;letter-spacing:normal;">
-                    <input type="checkbox" id="wsPublished" checked style="width:auto;"> Опубликован (виден репетиторам и ученикам)
+                    <input type="checkbox" id="wsPublished" checked style="width:auto;">
+                    Опубликован (виден репетиторам и ученикам)
                   </label>
                 </div>
 
@@ -567,17 +673,25 @@
                   <button class="secondary" onclick="cancelWordSetForm()">Отмена</button>
                   <button class="primary" onclick="saveWordSet()">Сохранить набор</button>
                 </div>
+
                 <p class="hint" id="wordSetFormError"></p>
+
               </div>
+
             </div>
 
             <div id="wordSetsListWrap" style="margin-top:20px;"></div>
+
           </div>
 
           <!-- Account -->
           <div id="teacher-account" class="hidden">
+
             <h2 class="dash-title">Аккаунт</h2>
-            <p class="dash-subtitle">Вы вошли как <b id="settingsEmailLabel"></b></p>
+
+            <p class="dash-subtitle">
+              Вы вошли как <b id="settingsEmailLabel"></b>
+            </p>
 
             <div class="step-card">
               <div class="step-card-icon">🧑</div>
@@ -592,7 +706,9 @@
               <div class="step-card-icon">✍️</div>
               <div class="step-card-body">
                 <label>Подпись на сертификатах</label>
-                <p class="step-hint">Печатается в поле «Подпись репетитора» на сертификатах ваших учеников</p>
+                <p class="step-hint">
+                  Печатается в поле «Подпись репетитора» на сертификатах ваших учеников
+                </p>
                 <input type="text" id="acctCertSignature" placeholder="Например: Орехов М.А.">
               </div>
             </div>
@@ -601,7 +717,11 @@
             <p class="hint" id="acctSaveMsg"></p>
 
             <div id="acctPasswordSection" style="margin-top:26px;">
-              <h3 style="font-family:var(--serif);font-size:15px;margin:0 0 4px;">Смена пароля</h3>
+
+              <h3 style="font-family:var(--serif);font-size:15px;margin:0 0 4px;">
+                Смена пароля
+              </h3>
+
               <div class="step-card">
                 <div class="step-card-icon">🔒</div>
                 <div class="step-card-body">
@@ -609,6 +729,7 @@
                   <input type="password" id="acctCurrentPassword" placeholder="Введите текущий пароль">
                 </div>
               </div>
+
               <div class="step-card">
                 <div class="step-card-icon">🔑</div>
                 <div class="step-card-body">
@@ -616,279 +737,525 @@
                   <input type="password" id="acctNewPassword" placeholder="Минимум 6 символов">
                 </div>
               </div>
-              <button class="secondary" onclick="changeAccountPassword()">Сменить пароль</button>
+
+              <button class="secondary" onclick="changeAccountPassword()">
+                Сменить пароль
+              </button>
+
               <p class="hint" id="acctPasswordMsg"></p>
+
             </div>
+
             <p class="hint" id="acctPasswordNote"></p>
 
             <div style="margin-top:24px;">
-              <button class="secondary" onclick="toggleTheme()">Сменить тему оформления</button>
-              <button class="secondary" style="margin-left:8px;" onclick="signOutTeacher()">Выйти из аккаунта</button>
+              <button class="secondary" onclick="toggleTheme()">
+                Сменить тему оформления
+              </button>
+
+              <button class="secondary" style="margin-left:8px;" onclick="signOutTeacher()">
+                Выйти из аккаунта
+              </button>
             </div>
+
           </div>
 
           <!-- ADMIN -->
           <div id="teacher-admin" class="panel hidden">
-          <h2><span class="num">👑</span>Админ-панель</h2>
-          <div class="tabs" id="admin-subtabs">
-            <button class="tab-btn" data-subtab="dashboard" onclick="setAdminSubTab('dashboard')">Dashboard</button>
-            <button class="tab-btn" data-subtab="tests" onclick="setAdminSubTab('tests')">Тесты</button>
-            <button class="tab-btn" data-subtab="books" onclick="setAdminSubTab('books')">Учебники</button>
-            <button class="tab-btn" data-subtab="teachers" onclick="setAdminSubTab('teachers')">Репетиторы</button>
-            <button class="tab-btn" data-subtab="students" onclick="setAdminSubTab('students')">Ученики</button>
-            <button class="tab-btn" data-subtab="certificate" onclick="setAdminSubTab('certificate')">Сертификат</button>
-            <button class="tab-btn" data-subtab="platform" onclick="setAdminSubTab('platform')">⚙️ Настройки платформы</button>
-          </div>
 
-          <!-- Dashboard -->
-          <div id="admin-dashboard">
-            <div id="adminDashboardWrap"></div>
-          </div>
+            <h2><span class="num">👑</span>Админ-панель</h2>
 
-          <!-- Tests bank -->
-          <div id="admin-tests" class="hidden">
-            <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:22px;">
-              <h3 style="font-family:var(--serif);font-size:15px;margin:0 0 8px;">📦 Массовый импорт тестов (JSON)</h3>
-              <p class="hint" style="margin-bottom:8px;">
-                Вставьте массив тестов в формате JSON (например, подготовленный из загруженного вами документа) и нажмите «Импортировать».
-                Учебники, которых ещё нет в списке, будут добавлены автоматически.
+            <div class="tabs" id="admin-subtabs">
+
+              <button class="tab-btn" data-subtab="dashboard" onclick="setAdminSubTab('dashboard')">
+                Dashboard
+              </button>
+
+              <button class="tab-btn" data-subtab="tests" onclick="setAdminSubTab('tests')">
+                Тесты
+              </button>
+
+              <button class="tab-btn" data-subtab="books" onclick="setAdminSubTab('books')">
+                Учебники
+              </button>
+
+              <button class="tab-btn" data-subtab="teachers" onclick="setAdminSubTab('teachers')">
+                Репетиторы
+              </button>
+
+              <button class="tab-btn" data-subtab="students" onclick="setAdminSubTab('students')">
+                Ученики
+              </button>
+
+              <button class="tab-btn" data-subtab="certificate" onclick="setAdminSubTab('certificate')">
+                Сертификат
+              </button>
+
+              <button class="tab-btn" data-subtab="platform" onclick="setAdminSubTab('platform')">
+                ⚙️ Настройки платформы
+              </button>
+
+            </div>
+
+            <!-- Dashboard -->
+            <div id="admin-dashboard">
+              <div id="adminDashboardWrap"></div>
+            </div>
+
+            <!-- Tests bank -->
+            <div id="admin-tests" class="hidden">
+
+              <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:22px;">
+
+                <h3 style="font-family:var(--serif);font-size:15px;margin:0 0 8px;">
+                  📦 Массовый импорт тестов (JSON)
+                </h3>
+
+                <p class="hint" style="margin-bottom:8px;">
+                  Вставьте массив тестов в формате JSON (например, подготовленный из загруженного вами документа) и нажмите «Импортировать».
+                  Учебники, которых ещё нет в списке, будут добавлены автоматически.
+                </p>
+
+                <textarea id="bulkImportJson" rows="6"
+                  placeholder="[ { &quot;title&quot;: &quot;Unit 1A&quot;, &quot;book&quot;: &quot;Speak out&quot;, &quot;level&quot;: &quot;Beginner (A1)&quot;, &quot;topic&quot;: &quot;Hello&quot;, &quot;sections&quot;: [...] }, ... ]"
+                  style="width:100%;background:var(--bg-panel);border:1px solid var(--border);color:var(--ink);border-radius:7px;padding:10px;font-family:var(--mono);font-size:11.5px;"></textarea>
+
+                <button class="primary" style="margin-top:8px;" onclick="runBulkImport()">
+                  Импортировать
+                </button>
+
+                <p class="hint" id="bulkImportStatus"></p>
+
+              </div>
+
+              <h3 style="font-family:var(--serif);font-size:16px;">
+                Банк тестов
+              </h3>
+
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+
+                <select id="adminFilterBook" onchange="renderAdminTestsList()" style="max-width:180px;"></select>
+
+                <select id="adminFilterLevel" onchange="renderAdminTestsList()" style="max-width:180px;"></select>
+
+                <input type="text" id="adminFilterTopic" placeholder="Поиск по теме…" oninput="renderAdminTestsList()" style="max-width:200px;">
+
+              </div>
+
+              <div id="adminTestsListWrap"></div>
+
+              <h3 id="adminFormTitle" style="font-family:var(--serif);font-size:16px;margin-top:26px;">
+                Добавить новый тест
+              </h3>
+
+              <label for="adminTestTitle">Название теста</label>
+              <input type="text" id="adminTestTitle" placeholder="Например: Modal verbs">
+
+              <label for="adminTestBook">Учебник</label>
+              <select id="adminTestBook"></select>
+
+              <label for="adminTestLevel">Уровень</label>
+              <select id="adminTestLevel"></select>
+
+              <label for="adminTestTopic">Тема</label>
+              <input type="text" id="adminTestTopic" placeholder="Например: Present Simple">
+
+              <div id="adminSectionsWrap" style="margin-top:16px;"></div>
+
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin:12px 0;">
+
+                <button class="secondary small" onclick="addAdminSection('grammar')">
+                  + 📘 Grammar
+                </button>
+
+                <button class="secondary small" onclick="addAdminSection('vocabulary')">
+                  + 🔤 Vocabulary
+                </button>
+
+                <button class="secondary small" onclick="addAdminSection('reading')">
+                  + 📖 Reading
+                </button>
+
+                <button class="secondary small" onclick="addAdminSection('writing')">
+                  + ✍️ Writing
+                </button>
+
+              </div>
+
+              <button class="primary" id="saveAdminTestBtn" onclick="saveAdminTest()">
+                Сохранить тест
+              </button>
+
+              <button class="secondary hidden" id="cancelEditBtn" onclick="cancelEditTest()">
+                Отменить редактирование
+              </button>
+
+              <p class="hint" id="adminError"></p>
+
+            </div>
+
+            <!-- Books -->
+            <div id="admin-books" class="hidden">
+
+              <h3 style="font-family:var(--serif);font-size:16px;">
+                Учебники
+              </h3>
+
+              <div style="display:flex;gap:8px;margin-bottom:16px;">
+
+                <input type="text" id="newBookName" placeholder="Название учебника" style="flex:1;">
+
+                <button class="secondary" onclick="addBook()">
+                  Добавить
+                </button>
+
+              </div>
+
+              <div id="adminBooksWrap"></div>
+
+            </div>
+
+            <!-- Teachers -->
+            <div id="admin-teachers" class="hidden">
+
+              <h3 style="font-family:var(--serif);font-size:16px;">
+                Репетиторы
+              </h3>
+
+              <div id="adminTeachersWrap"></div>
+
+            </div>
+
+            <!-- Students -->
+            <div id="admin-students" class="hidden">
+
+              <h3 style="font-family:var(--serif);font-size:16px;">
+                Ученики
+              </h3>
+
+              <div id="adminStudentsWrap"></div>
+
+            </div>
+
+            <!-- Certificate template -->
+            <div id="admin-certificate" class="hidden">
+
+              <h3 style="font-family:var(--serif);font-size:16px;">
+                Дизайн сертификата
+              </h3>
+
+              <p class="hint" style="margin-bottom:14px;">
+                Загрузите своё изображение — оно станет фоном всех выдаваемых сертификатов.
+                Имя ученика, тест, результат и дата печатаются поверх картинки в тех же местах,
+                что и в стандартном дизайне, — оставьте там свободное место. Рекомендуемый размер: примерно 1000×700.
               </p>
-              <textarea id="bulkImportJson" rows="6" placeholder="[ { &quot;title&quot;: &quot;Unit 1A&quot;, &quot;book&quot;: &quot;Speak out&quot;, &quot;level&quot;: &quot;Beginner (A1)&quot;, &quot;topic&quot;: &quot;Hello&quot;, &quot;sections&quot;: [...] }, ... ]"
-                style="width:100%;background:var(--bg-panel);border:1px solid var(--border);color:var(--ink);border-radius:7px;padding:10px;font-family:var(--mono);font-size:11.5px;"></textarea>
-              <button class="primary" style="margin-top:8px;" onclick="runBulkImport()">Импортировать</button>
-              <p class="hint" id="bulkImportStatus"></p>
+
+              <div id="certTemplatePreviewWrap" style="margin-bottom:16px;"></div>
+
+              <label for="certTemplateFile">
+                Файл изображения (PNG/JPEG)
+              </label>
+
+              <input type="file" id="certTemplateFile" accept="image/*">
+
+              <button class="primary" onclick="uploadCertificateTemplate()">
+                Загрузить
+              </button>
+
+              <button class="secondary" onclick="resetCertificateTemplate()">
+                Вернуть стандартный дизайн
+              </button>
+
+              <p class="hint" id="certTemplateError"></p>
+
             </div>
 
-            <h3 style="font-family:var(--serif);font-size:16px;">Банк тестов</h3>
-            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
-              <select id="adminFilterBook" onchange="renderAdminTestsList()" style="max-width:180px;"></select>
-              <select id="adminFilterLevel" onchange="renderAdminTestsList()" style="max-width:180px;"></select>
-              <input type="text" id="adminFilterTopic" placeholder="Поиск по теме…" oninput="renderAdminTestsList()" style="max-width:200px;">
+            <!-- Platform settings -->
+            <div id="admin-platform" class="hidden">
+
+              <h3 style="font-family:var(--serif);font-size:16px;">
+                Бренд
+              </h3>
+
+              <label>Название платформы</label>
+              <input type="text" id="setBrandName">
+
+              <label>Подпись под названием</label>
+              <input type="text" id="setBrandTagline">
+
+              <h3 style="font-family:var(--serif);font-size:16px;margin-top:22px;">
+                Главная страница
+              </h3>
+
+              <label>Заголовок (hero)</label>
+              <input type="text" id="setHeroHeadline">
+
+              <label>Описание под заголовком</label>
+              <textarea id="setHeroLead" rows="3"
+                style="width:100%;background:var(--bg);border:1px solid var(--border);color:var(--ink);border-radius:7px;padding:10px;font-family:var(--sans);font-size:14px;"></textarea>
+
+              <label>Бейдж над заголовком</label>
+              <input type="text" id="setHeroBadge1">
+
+              <label>Бейдж 1</label>
+              <input type="text" id="setHeroTag1">
+
+              <label>Бейдж 2</label>
+              <input type="text" id="setHeroTag2">
+
+              <label>Бейдж 3</label>
+              <input type="text" id="setHeroTag3">
+
+              <h3 style="font-family:var(--serif);font-size:16px;margin-top:22px;">
+                Контакты
+              </h3>
+
+              <label>Email в футере</label>
+              <input type="text" id="setFooterEmail">
+
+              <h3 style="font-family:var(--serif);font-size:16px;margin-top:22px;">
+                Уровни (A1–C2)
+              </h3>
+
+              <label>Уровень 1</label>
+              <input type="text" id="setLevel0">
+
+              <label>Уровень 2</label>
+              <input type="text" id="setLevel1">
+
+              <label>Уровень 3</label>
+              <input type="text" id="setLevel2">
+
+              <label>Уровень 4</label>
+              <input type="text" id="setLevel3">
+
+              <label>Уровень 5</label>
+              <input type="text" id="setLevel4">
+
+              <label>Уровень 6</label>
+              <input type="text" id="setLevel5">
+
+              <h3 style="font-family:var(--serif);font-size:16px;margin-top:22px;">
+                Цвет акцента
+              </h3>
+
+              <label>Основной цвет (кнопки, заголовки)</label>
+              <input type="color" id="setAccentColor" style="width:80px;height:40px;padding:2px;">
+
+              <h3 style="font-family:var(--serif);font-size:16px;margin-top:22px;">
+                Тексты сертификата
+              </h3>
+
+              <label>Заголовок, строка 1</label>
+              <input type="text" id="setCertTitle1">
+
+              <label>Заголовок, строка 2</label>
+              <input type="text" id="setCertTitle2">
+
+              <label>Подзаголовок</label>
+              <input type="text" id="setCertSubtitle">
+
+              <label>Текст о прохождении</label>
+              <input type="text" id="setCertCompletionText">
+
+              <label>Подпись роли (внизу слева)</label>
+              <input type="text" id="setCertRoleLabel">
+
+              <div style="margin-top:18px;">
+
+                <button class="secondary" onclick="resetPlatformSettingsForm()">
+                  Сбросить к стандартным
+                </button>
+
+                <button class="primary" onclick="savePlatformSettings()">
+                  Сохранить настройки
+                </button>
+
+              </div>
+
+              <p class="hint" id="platformSettingsMsg"></p>
+
             </div>
-            <div id="adminTestsListWrap"></div>
 
-            <h3 id="adminFormTitle" style="font-family:var(--serif);font-size:16px;margin-top:26px;">Добавить новый тест</h3>
-            <label for="adminTestTitle">Название теста</label>
-            <input type="text" id="adminTestTitle" placeholder="Например: Modal verbs">
-
-            <label for="adminTestBook">Учебник</label>
-            <select id="adminTestBook"></select>
-
-            <label for="adminTestLevel">Уровень</label>
-            <select id="adminTestLevel"></select>
-
-            <label for="adminTestTopic">Тема</label>
-            <input type="text" id="adminTestTopic" placeholder="Например: Present Simple">
-
-            <div id="adminSectionsWrap" style="margin-top:16px;"></div>
-            <div style="display:flex;gap:8px;flex-wrap:wrap;margin:12px 0;">
-              <button class="secondary small" onclick="addAdminSection('grammar')">+ 📘 Grammar</button>
-              <button class="secondary small" onclick="addAdminSection('vocabulary')">+ 🔤 Vocabulary</button>
-              <button class="secondary small" onclick="addAdminSection('reading')">+ 📖 Reading</button>
-              <button class="secondary small" onclick="addAdminSection('writing')">+ ✍️ Writing</button>
-            </div>
-            <button class="primary" id="saveAdminTestBtn" onclick="saveAdminTest()">Сохранить тест</button>
-            <button class="secondary hidden" id="cancelEditBtn" onclick="cancelEditTest()">Отменить редактирование</button>
-            <p class="hint" id="adminError"></p>
           </div>
 
-          <!-- Books -->
-          <div id="admin-books" class="hidden">
-            <h3 style="font-family:var(--serif);font-size:16px;">Учебники</h3>
-            <div style="display:flex;gap:8px;margin-bottom:16px;">
-              <input type="text" id="newBookName" placeholder="Название учебника" style="flex:1;">
-              <button class="secondary" onclick="addBook()">Добавить</button>
-            </div>
-            <div id="adminBooksWrap"></div>
-          </div>
-
-          <!-- Teachers -->
-          <div id="admin-teachers" class="hidden">
-            <h3 style="font-family:var(--serif);font-size:16px;">Репетиторы</h3>
-            <div id="adminTeachersWrap"></div>
-          </div>
-
-          <!-- Students -->
-          <div id="admin-students" class="hidden">
-            <h3 style="font-family:var(--serif);font-size:16px;">Ученики</h3>
-            <div id="adminStudentsWrap"></div>
-          </div>
-
-          <!-- Certificate template -->
-          <div id="admin-certificate" class="hidden">
-            <h3 style="font-family:var(--serif);font-size:16px;">Дизайн сертификата</h3>
-            <p class="hint" style="margin-bottom:14px;">
-              Загрузите своё изображение — оно станет фоном всех выдаваемых сертификатов.
-              Имя ученика, тест, результат и дата печатаются поверх картинки в тех же местах,
-              что и в стандартном дизайне, — оставьте там свободное место. Рекомендуемый размер: примерно 1000×700.
-            </p>
-            <div id="certTemplatePreviewWrap" style="margin-bottom:16px;"></div>
-            <label for="certTemplateFile">Файл изображения (PNG/JPEG)</label>
-            <input type="file" id="certTemplateFile" accept="image/*">
-            <button class="primary" onclick="uploadCertificateTemplate()">Загрузить</button>
-            <button class="secondary" onclick="resetCertificateTemplate()">Вернуть стандартный дизайн</button>
-            <p class="hint" id="certTemplateError"></p>
-          </div>
-
-          <!-- Platform settings -->
-          <div id="admin-platform" class="hidden">
-            <h3 style="font-family:var(--serif);font-size:16px;">Бренд</h3>
-            <label>Название платформы</label>
-            <input type="text" id="setBrandName">
-            <label>Подпись под названием</label>
-            <input type="text" id="setBrandTagline">
-
-            <h3 style="font-family:var(--serif);font-size:16px;margin-top:22px;">Главная страница</h3>
-            <label>Заголовок (hero)</label>
-            <input type="text" id="setHeroHeadline">
-            <label>Описание под заголовком</label>
-            <textarea id="setHeroLead" rows="3" style="width:100%;background:var(--bg);border:1px solid var(--border);color:var(--ink);border-radius:7px;padding:10px;font-family:var(--sans);font-size:14px;"></textarea>
-            <label>Бейдж над заголовком</label>
-            <input type="text" id="setHeroBadge1">
-            <label>Бейдж 1</label>
-            <input type="text" id="setHeroTag1">
-            <label>Бейдж 2</label>
-            <input type="text" id="setHeroTag2">
-            <label>Бейдж 3</label>
-            <input type="text" id="setHeroTag3">
-
-            <h3 style="font-family:var(--serif);font-size:16px;margin-top:22px;">Контакты</h3>
-            <label>Email в футере</label>
-            <input type="text" id="setFooterEmail">
-
-            <h3 style="font-family:var(--serif);font-size:16px;margin-top:22px;">Уровни (A1–C2)</h3>
-            <label>Уровень 1</label>
-            <input type="text" id="setLevel0">
-            <label>Уровень 2</label>
-            <input type="text" id="setLevel1">
-            <label>Уровень 3</label>
-            <input type="text" id="setLevel2">
-            <label>Уровень 4</label>
-            <input type="text" id="setLevel3">
-            <label>Уровень 5</label>
-            <input type="text" id="setLevel4">
-            <label>Уровень 6</label>
-            <input type="text" id="setLevel5">
-
-            <h3 style="font-family:var(--serif);font-size:16px;margin-top:22px;">Цвет акцента</h3>
-            <label>Основной цвет (кнопки, заголовки)</label>
-            <input type="color" id="setAccentColor" style="width:80px;height:40px;padding:2px;">
-
-            <h3 style="font-family:var(--serif);font-size:16px;margin-top:22px;">Тексты сертификата</h3>
-            <label>Заголовок, строка 1</label>
-            <input type="text" id="setCertTitle1">
-            <label>Заголовок, строка 2</label>
-            <input type="text" id="setCertTitle2">
-            <label>Подзаголовок</label>
-            <input type="text" id="setCertSubtitle">
-            <label>Текст о прохождении</label>
-            <input type="text" id="setCertCompletionText">
-            <label>Подпись роли (внизу слева)</label>
-            <input type="text" id="setCertRoleLabel">
-
-            <div style="margin-top:18px;">
-              <button class="secondary" onclick="resetPlatformSettingsForm()">Сбросить к стандартным</button>
-              <button class="primary" onclick="savePlatformSettings()">Сохранить настройки</button>
-            </div>
-            <p class="hint" id="platformSettingsMsg"></p>
-          </div>
         </div>
-        </div>
+
       </div>
+
     </div>
+
   </section>
 
-  <!-- STUDENT: прохождение теста (виден после ввода кода) -->
+  <!-- STUDENT: прохождение теста -->
   <section id="view-student" class="hidden">
+
     <button class="back-link" onclick="goHome()">← на главную</button>
 
     <div id="student-sections-picker" class="panel hidden">
+
       <h2 id="pickerTestHeader"></h2>
-      <p class="hint" style="margin-bottom:14px;">Выберите разделы, которые нужно пройти</p>
+
+      <p class="hint" style="margin-bottom:14px;">
+        Выберите разделы, которые нужно пройти
+      </p>
+
       <div class="section-all-toggle">
+
         <input type="checkbox" id="pickerAllSections" checked onchange="toggleAllSectionCards()">
-        <label for="pickerAllSections" style="text-transform:none;font-size:13.5px;margin:0;">Все разделы</label>
+
+        <label for="pickerAllSections" style="text-transform:none;font-size:13.5px;margin:0;">
+          Все разделы
+        </label>
+
       </div>
+
       <div class="section-cards" id="sectionCardsWrap"></div>
+
       <p class="hint" id="pickerError"></p>
-      <button class="primary" onclick="confirmSectionSelection()">Начать тест</button>
+
+      <button class="primary" onclick="confirmSectionSelection()">
+        Начать тест
+      </button>
+
     </div>
 
     <div id="student-test" class="panel hidden">
+
       <h2 id="testHeader"></h2>
+
       <div id="sectionProgress" class="hint" style="margin-bottom:14px;"></div>
+
       <div id="testQuestions"></div>
-      <button class="primary" id="sectionNextBtn">Далее</button>
+
+      <button class="primary" id="sectionNextBtn">
+        Далее
+      </button>
+
     </div>
 
     <div id="student-result" class="panel hidden"></div>
+
   </section>
 
   <!-- ЛЕКСИКА (ученик) -->
   <section id="view-vocab" class="hidden">
+
     <button class="back-link" onclick="goHome()">← на главную</button>
 
     <div id="vocab-sets-list" class="panel">
+
       <h2>Лексика</h2>
+
       <p class="hint" id="vocabDueBanner"></p>
+
       <div id="studentWordSetsWrap"></div>
+
     </div>
 
     <div id="vocab-mode-select" class="panel hidden">
-      <button class="back-link" onclick="backToVocabList()">← к наборам</button>
+
+      <button class="back-link" onclick="backToVocabList()">
+        ← к наборам
+      </button>
+
       <h2 id="vocabSetTitle"></h2>
+
       <div class="section-cards">
+
         <div class="section-card" onclick="startVocabMode('flashcards')">
-          <div class="sc-icon">🗂️</div><div class="sc-title">Карточки</div><div class="sc-desc">Слово → перевод</div>
+          <div class="sc-icon">🗂️</div>
+          <div class="sc-title">Карточки</div>
+          <div class="sc-desc">Слово → перевод</div>
         </div>
+
         <div class="section-card" onclick="startVocabMode('choice')">
-          <div class="sc-icon">✅</div><div class="sc-title">Выбор ответа</div><div class="sc-desc">4 варианта перевода</div>
+          <div class="sc-icon">✅</div>
+          <div class="sc-title">Выбор ответа</div>
+          <div class="sc-desc">4 варианта перевода</div>
         </div>
+
         <div class="section-card" onclick="startVocabMode('learn')">
-          <div class="sc-icon">✍️</div><div class="sc-title">Заучивание</div><div class="sc-desc">Введите перевод сами</div>
+          <div class="sc-icon">✍️</div>
+          <div class="sc-title">Заучивание</div>
+          <div class="sc-desc">Введите перевод сами</div>
         </div>
+
         <div class="section-card" onclick="startVocabMode('truefalse')">
-          <div class="sc-icon">⚖️</div><div class="sc-title">Правда или ложь</div><div class="sc-desc">Слово + перевод — верно?</div>
+          <div class="sc-icon">⚖️</div>
+          <div class="sc-title">Правда или ложь</div>
+          <div class="sc-desc">Слово + перевод — верно?</div>
         </div>
+
         <div class="section-card" onclick="startVocabMode('fillblank')">
-          <div class="sc-icon">📝</div><div class="sc-title">Заполни пропуск</div><div class="sc-desc">Слово в предложении</div>
+          <div class="sc-icon">📝</div>
+          <div class="sc-title">Заполни пропуск</div>
+          <div class="sc-desc">Слово в предложении</div>
         </div>
+
         <div class="section-card" onclick="startVocabMode('typeword')">
-          <div class="sc-icon">⌨️</div><div class="sc-title">Напечатай слово</div><div class="sc-desc">По переводу — слово на английском</div>
+          <div class="sc-icon">⌨️</div>
+          <div class="sc-title">Напечатай слово</div>
+          <div class="sc-desc">По переводу — слово на английском</div>
         </div>
+
         <div class="section-card" onclick="startVocabMode('oddoneout')">
-          <div class="sc-icon">🔎</div><div class="sc-title">Найди лишнее</div><div class="sc-desc">Слово из другой темы</div>
+          <div class="sc-icon">🔎</div>
+          <div class="sc-title">Найди лишнее</div>
+          <div class="sc-desc">Слово из другой темы</div>
         </div>
+
         <div class="section-card" onclick="startVocabMode('memory')">
-          <div class="sc-icon">🧠</div><div class="sc-title">Memory</div><div class="sc-desc">Найдите пары слово-перевод</div>
+          <div class="sc-icon">🧠</div>
+          <div class="sc-title">Memory</div>
+          <div class="sc-desc">Найдите пары слово-перевод</div>
         </div>
+
         <div class="section-card" onclick="startVocabMode('scramble')">
-          <div class="sc-icon">🔤</div><div class="sc-title">Собери слово</div><div class="sc-desc">Буквы перемешаны</div>
+          <div class="sc-icon">🔤</div>
+          <div class="sc-title">Собери слово</div>
+          <div class="sc-desc">Буквы перемешаны</div>
         </div>
+
         <div class="section-card" onclick="startVocabMode('speedquiz')">
-          <div class="sc-icon">⚡</div><div class="sc-title">Быстрый тест</div><div class="sc-desc">Максимум ответов за 60 сек</div>
+          <div class="sc-icon">⚡</div>
+          <div class="sc-title">Быстрый тест</div>
+          <div class="sc-desc">Максимум ответов за 60 сек</div>
         </div>
+
         <div class="section-card" onclick="startVocabMode('listen')">
-          <div class="sc-icon">🎧</div><div class="sc-title">Прослушай и выбери</div><div class="sc-desc">Аудио → перевод</div>
+          <div class="sc-icon">🎧</div>
+          <div class="sc-title">Прослушай и выбери</div>
+          <div class="sc-desc">Аудио → перевод</div>
         </div>
+
       </div>
+
     </div>
 
     <div id="vocab-play" class="panel hidden">
-      <button class="back-link" onclick="backToVocabModeSelect()">← к режимам</button>
+
+      <button class="back-link" onclick="backToVocabModeSelect()">
+        ← к режимам
+      </button>
+
       <div id="vocabProgressLine" class="hint" style="margin-bottom:14px;"></div>
+
       <div id="vocabPlayArea"></div>
+
     </div>
 
     <div id="vocab-result" class="panel hidden"></div>
+
   </section>
 
 </div>
 
 <canvas id="certCanvas" width="1000" height="700" class="hidden"></canvas>
+
 <div id="toastWrap"></div>
 
-<!-- Firebase (общая база данных в интернете) -->
+<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
