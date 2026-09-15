@@ -1,0 +1,35 @@
+:root {
+  --bg: #12212b;
+  --bg-panel: #1b323e;
+  --bg-panel-2: #213c49;
+  --paper: #f5f0e4;
+  --paper-2: #ece4d2;
+  --ink: #eae6da;
+  --ink-dim: #a9b8bd;
+  --accent: #e0a94c;
+  --accent-dim: #8a6a2c;
+  --red: #c0533e;
+  --green: #6fa98a;
+  --border: rgba(234,230,220,0.14);
+
+  --radius: 10px;
+
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: 'Segoe UI', system-ui, -apple-system, Helvetica, Arial, sans-serif;
+  --mono: 'Consolas', 'SFMono-Regular', Menlo, monospace;
+}
+
+[data-theme="light"] {
+  --bg: #f3efe4;
+  --bg-panel: #ffffff;
+  --bg-panel-2: #f2ede0;
+  --paper: #ffffff;
+  --paper-2: #f0ece1;
+  --ink: #20241f;
+  --ink-dim: #5c6660;
+  --accent: #b9822f;
+  --accent-dim: #8a6a2c;
+  --red: #a83f2e;
+  --green: #3f7d5c;
+  --border: rgba(20,20,20,0.12);
+}
