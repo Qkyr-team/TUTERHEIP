@@ -280,22 +280,46 @@ async function submitEmailAuth(){
   const email = document.getElementById('authEmail').value.trim();
   const password = document.getElementById('authPassword').value;
   const errEl = document.getElementById('authError');
+
   errEl.textContent = '';
-  if(!email || !password){ errEl.textContent = 'Заполните email и пароль.'; return; }
+
+  if(!email || !password){
+    errEl.textContent = 'Заполните email и пароль.';
+    return;
+  }
+
   const btn = document.getElementById('authSubmitBtn');
   btn.disabled = true;
+
   try{
+
     if(authMode === 'login'){
+
       await auth.signInWithEmailAndPassword(email, password);
+
+      // Перенаправление после успешного входа
+      window.location.href = 'materials/materials.html';
+
     } else {
+
       await auth.createUserWithEmailAndPassword(email, password);
+
+      // После регистрации тоже открываем кабинет
+      window.location.href = 'materials/materials.html';
+
     }
+
     document.getElementById('authEmail').value = '';
     document.getElementById('authPassword').value = '';
+
   } catch(err){
+
     errEl.textContent = authErrorText(err);
+
   } finally{
+
     btn.disabled = false;
+
   }
 }
 
