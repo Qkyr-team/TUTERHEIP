@@ -81,6 +81,22 @@ function goTeacher(){
   show('view-teacher');
   refreshTeacherView();
 }
+async function getTeacherAccess(){
+  if(!FIREBASE_CONFIGURED || !auth.currentUser) return false;
+
+  const isAdmin = ADMIN_EMAIL !== "ВСТАВЬТЕ_ВАШ_EMAIL_СЮДА"
+    && (auth.currentUser.email || '').toLowerCase() === ADMIN_EMAIL.toLowerCase();
+  if(isAdmin) return true;
+
+  try{
+    const snap = await db.collection('users').doc(auth.currentUser.uid).get();
+    const profile = snap.exists ? snap.data() : null;
+    return !!(profile && profile.role === 'teacher' && !profile.blocked);
+  } catch(err){
+    return false;
+  }
+}
+
 async function refreshTeacherView(){
   const isLoggedIn = FIREBASE_CONFIGURED && auth.currentUser;
   if(!isLoggedIn){
@@ -88,33 +104,22 @@ async function refreshTeacherView(){
     selectRole('teacher');
     return;
   }
-  document.getElementById('teacherEmailLabel').textContent = auth.currentUser.email || auth.currentUser.displayName || 'Вы вошли';
 
   const isAdmin = ADMIN_EMAIL !== "ВСТАВЬТЕ_ВАШ_EMAIL_СЮДА"
     && (auth.currentUser.email || '').toLowerCase() === ADMIN_EMAIL.toLowerCase();
+  document.getElementById('teacherEmailLabel').textContent = auth.currentUser.email || auth.currentUser.displayName || 'Вы вошли';
   document.getElementById('adminTabBtn').classList.toggle('hidden', !isAdmin);
 
-  // Проверка роли и блокировки: кабинет репетитора доступен только teacher/admin.
-  try{
-    const snap = await db.collection('users').doc(auth.currentUser.uid).get();
-    const profile = snap.exists ? snap.data() : null;
-
-    if(!isAdmin && (!profile || profile.role !== 'teacher')){
-      show('view-home');
-      selectRole('student');
-      return;
-    }
-
-    const blocked = !!(profile && profile.blocked) && !isAdmin;
-    document.getElementById('teacherBlockedNotice').classList.toggle('hidden', !blocked);
-    document.getElementById('teacher-tabs-and-panels').classList.toggle('hidden', blocked);
-    if(blocked) return;
-  } catch(err){
+  if(!(await getTeacherAccess())){
+    document.getElementById('teacherBlockedNotice').classList.add('hidden');
+    document.getElementById('teacher-tabs-and-panels').classList.add('hidden');
     show('view-home');
     selectRole('student');
     return;
   }
 
+  document.getElementById('teacherBlockedNotice').classList.add('hidden');
+  document.getElementById('teacher-tabs-and-panels').classList.remove('hidden');
   setTeacherTab('create');
 }
 
@@ -2070,6 +2075,16 @@ async function generateUniqueCode(){
 async function createCode(){
   if(!FIREBASE_CONFIGURED){ alert('Сначала подключите базу данных Firebase (см. инструкцию в чате).'); return; }
   if(!auth.currentUser){ alert('Сначала войдите в свой кабинет.'); return; }
+
+  // Критическая проверка: Student не может создавать teacher-коды даже
+  // при прямом вызове функции или обходе интерфейса.
+  if(!(await getTeacherAccess())){
+    alert('Доступ запрещён. Эта функция доступна только репетитору.');
+    show('view-home');
+    selectRole('student');
+    return;
+  }
+
   const testId = document.getElementById('tCourse').value;
   const name = document.getElementById('tName').value.trim();
   if(!testId){ alert('Выберите тест — сейчас нет подходящего теста под выбранные учебник/уровень.'); return; }
