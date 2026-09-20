@@ -442,21 +442,33 @@ async function loadStudentHistory(){
 
 async function ensureUserProfile(likelyRole){
   if(!FIREBASE_CONFIGURED || !auth.currentUser) return;
+
   const uid = auth.currentUser.uid;
   const ref = db.collection('users').doc(uid);
+
   try{
     const snap = await ref.get();
+
     if(!snap.exists){
+
+      // Новые аккаунты по умолчанию создаются как Student.
+      // Teacher/Admin назначаются отдельно.
       await ref.set({
         email: auth.currentUser.email || '',
-        role: likelyRole,
+        role: 'student',
         blocked: false,
         createdAt: new Date().toISOString(),
         lastLoginAt: new Date().toISOString()
       });
+
     } else {
-      await ref.update({ lastLoginAt: new Date().toISOString() });
+
+      // При обычном входе роль никогда автоматически не меняется.
+      await ref.update({
+        lastLoginAt: new Date().toISOString()
+      });
     }
+
   } catch(err){
     console.error('ensureUserProfile failed', err);
   }
@@ -518,7 +530,7 @@ async function resetPassword(event) {
 
             case 'auth/invalid-email':
                 errorEl.textContent =
-                    'Введите корректный email.';
+                    'Вrole: likelyRole,едите корректный email.';
                 break;
 
             case 'auth/user-not-found':
