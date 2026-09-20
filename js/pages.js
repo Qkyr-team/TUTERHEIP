@@ -84,7 +84,6 @@ function goTeacher(){
 async function refreshTeacherView(){
   const isLoggedIn = FIREBASE_CONFIGURED && auth.currentUser;
   if(!isLoggedIn){
-    // Подстраховка: без входа кабинет не открыть — возвращаем на главную с открытой формой входа
     show('view-home');
     selectRole('teacher');
     return;
@@ -95,15 +94,26 @@ async function refreshTeacherView(){
     && (auth.currentUser.email || '').toLowerCase() === ADMIN_EMAIL.toLowerCase();
   document.getElementById('adminTabBtn').classList.toggle('hidden', !isAdmin);
 
-  // Проверка блокировки
+  // Проверка роли и блокировки: кабинет репетитора доступен только teacher/admin.
   try{
     const snap = await db.collection('users').doc(auth.currentUser.uid).get();
     const profile = snap.exists ? snap.data() : null;
+
+    if(!isAdmin && (!profile || profile.role !== 'teacher')){
+      show('view-home');
+      selectRole('student');
+      return;
+    }
+
     const blocked = !!(profile && profile.blocked) && !isAdmin;
     document.getElementById('teacherBlockedNotice').classList.toggle('hidden', !blocked);
     document.getElementById('teacher-tabs-and-panels').classList.toggle('hidden', blocked);
     if(blocked) return;
-  } catch(err){ /* если проверка не удалась — не блокируем доступ */ }
+  } catch(err){
+    show('view-home');
+    selectRole('student');
+    return;
+  }
 
   setTeacherTab('create');
 }
