@@ -451,11 +451,10 @@ async function ensureUserProfile(likelyRole){
 
     if(!snap.exists){
 
-      // Новые аккаунты по умолчанию создаются как Student.
-      // Teacher/Admin назначаются отдельно.
+      // Роль нового аккаунта определяется текущей панелью регистрации.
       await ref.set({
         email: auth.currentUser.email || '',
-        role: 'student',
+        role: likelyRole === 'teacher' ? 'teacher' : 'student',
         blocked: false,
         createdAt: new Date().toISOString(),
         lastLoginAt: new Date().toISOString()
