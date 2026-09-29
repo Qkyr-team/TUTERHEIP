@@ -1,0 +1,219 @@
+<section id="teacher-dashboard-home" class="dashboard-page">
+
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+        <div class="dashboard-header-content">
+            <span class="dashboard-label">TUTORHELP</span>
+            <h1>Добро пожаловать!</h1>
+            <p>Ваш рабочий центр репетитора</p>
+        </div>
+
+        <div class="dashboard-date" id="dashboardDate">
+            <!-- Дата загружается через dashboard.js -->
+        </div>
+    </header>
+
+
+    <!-- Statistics -->
+    <section class="dashboard-stats">
+
+        <article class="dashboard-stat-card">
+            <span class="dashboard-stat-icon">🎓</span>
+            <div>
+                <span class="dashboard-stat-label">Ученики</span>
+                <strong id="dashboardStudentsCount">0</strong>
+            </div>
+        </article>
+
+        <article class="dashboard-stat-card">
+            <span class="dashboard-stat-icon">🔗</span>
+            <div>
+                <span class="dashboard-stat-label">Создано кодов</span>
+                <strong id="dashboardCodesCount">0</strong>
+            </div>
+        </article>
+
+        <article class="dashboard-stat-card">
+            <span class="dashboard-stat-icon">📊</span>
+            <div>
+                <span class="dashboard-stat-label">Результаты</span>
+                <strong id="dashboardResultsCount">0</strong>
+            </div>
+        </article>
+
+        <article class="dashboard-stat-card">
+            <span class="dashboard-stat-icon">📄</span>
+            <div>
+                <span class="dashboard-stat-label">Сертификаты</span>
+                <strong id="dashboardCertificatesCount">0</strong>
+            </div>
+        </article>
+
+    </section>
+
+
+    <!-- Quick Actions -->
+    <section class="dashboard-section">
+
+        <div class="dashboard-section-header">
+            <div>
+                <h2>Быстрые действия</h2>
+                <p>Основные инструменты репетитора</p>
+            </div>
+        </div>
+
+        <div class="dashboard-actions">
+
+            <button class="dashboard-action" onclick="setTeacherTab('create')">
+                <span class="dashboard-action-icon">➕</span>
+                <span class="dashboard-action-content">
+                    <strong>Создать код</strong>
+                    <small>Назначить тест ученику</small>
+                </span>
+            </button>
+
+            <button class="dashboard-action" onclick="setTeacherTab('students')">
+                <span class="dashboard-action-icon">🎓</span>
+                <span class="dashboard-action-content">
+                    <strong>Мои ученики</strong>
+                    <small>Управление учениками</small>
+                </span>
+            </button>
+
+            <button class="dashboard-action" onclick="setTeacherTab('results')">
+                <span class="dashboard-action-icon">📊</span>
+                <span class="dashboard-action-content">
+                    <strong>Результаты</strong>
+                    <small>Результаты учеников</small>
+                </span>
+            </button>
+
+            <button class="dashboard-action" onclick="setTeacherTab('certs')">
+                <span class="dashboard-action-icon">📄</span>
+                <span class="dashboard-action-content">
+                    <strong>Сертификаты</strong>
+                    <small>Выдать сертификат</small>
+                </span>
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Main Dashboard Grid -->
+    <section class="dashboard-main-grid">
+
+        <!-- Activity -->
+        <article class="dashboard-panel dashboard-activity">
+
+            <div class="dashboard-panel-header">
+                <div>
+                    <h2>Активность</h2>
+                    <p>Обзор работы с учениками</p>
+                </div>
+
+                <select id="dashboardActivityPeriod">
+                    <option value="7">7 дней</option>
+                    <option value="30">30 дней</option>
+                </select>
+            </div>
+
+            <div class="dashboard-chart" id="dashboardActivityChart">
+                <!-- График будет добавлен через JS -->
+            </div>
+
+        </article>
+
+
+        <!-- Upcoming -->
+        <article class="dashboard-panel">
+
+            <div class="dashboard-panel-header">
+                <div>
+                    <h2>Ближайшие события</h2>
+                    <p>Ваше расписание</p>
+                </div>
+            </div>
+
+            <div id="dashboardUpcoming">
+                <!-- События будут добавлены через JS -->
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- Bottom Dashboard Grid -->
+    <section class="dashboard-main-grid">
+
+        <!-- Recent Results -->
+        <article class="dashboard-panel">
+
+            <div class="dashboard-panel-header">
+                <div>
+                    <h2>Последние результаты</h2>
+                    <p>Недавняя активность учеников</p>
+                </div>
+
+                <button
+                    type="button"
+                    class="dashboard-link"
+                    onclick="setTeacherTab('results')"
+                >
+                    Все результаты →
+                </button>
+            </div>
+
+            <div id="dashboardRecentResults">
+                <!-- Результаты будут добавлены через JS -->
+            </div>
+
+        </article>
+
+
+        <!-- Students -->
+        <article class="dashboard-panel">
+
+            <div class="dashboard-panel-header">
+                <div>
+                    <h2>Мои ученики</h2>
+                    <p>Ваши активные ученики</p>
+                </div>
+
+                <button
+                    type="button"
+                    class="dashboard-link"
+                    onclick="setTeacherTab('students')"
+                >
+                    Все ученики →
+                </button>
+            </div>
+
+            <div id="dashboardRecentStudents">
+                <!-- Ученики будут добавлены через JS -->
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- Additional Information -->
+    <section class="dashboard-section">
+
+        <div class="dashboard-section-header">
+            <div>
+                <h2>Дополнительная информация</h2>
+                <p>Полезные данные о вашей работе</p>
+            </div>
+        </div>
+
+        <div id="dashboardAdditionalInfo">
+            <!-- Будущий контент -->
+        </div>
+
+    </section>
+
+</section>
