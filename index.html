@@ -346,7 +346,14 @@
       <div id="teacher-tabs-and-panels" class="dash-layout">
 
         <aside class="dash-sidebar">
-
+          <button class="dash-nav-item" data-tab="info" onclick="setTeacherTab('info')">
+          📢 Информация
+          </button>
+          
+          <button class="dash-nav-item" data-tab="dashboard" onclick="setTeacherTab('dashboard')">
+          🏠 Dashboard
+          </button>
+          
           <button class="dash-nav-item" data-tab="create" onclick="setTeacherTab('create')">
             ➕ Создать код
           </button>
@@ -383,6 +390,14 @@
           <div class="breadcrumb">
             Главная <span>›</span> <span id="dashBreadcrumbCurrent">Создать код</span>
           </div>
+
+          <!-- Teacher Info -->
+  <div id="teacher-info" class="hidden">
+    <h2 class="dash-title">Информация для репетиторов</h2>
+    <p class="dash-subtitle">Новости платформы, обновления и полезные советы</p>
+    <div id="teacherInfoWrap"></div>
+  </div>
+
 
           <!-- Create code -->
           <div id="teacher-create">
@@ -1261,6 +1276,7 @@
 <script src="js/components.js"></script>
 <script src="js/pages.js"></script>
 <script src="theme/theme.js"></script>
+<script srs="js/teacher-info.js"></script>
 
 </body>
 </html>
