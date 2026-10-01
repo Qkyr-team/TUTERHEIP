@@ -1,0 +1,478 @@
+/* ---------------------------------------------------------
+   theme/apple.css
+   Стиль «матовое стекло» (Apple / iOS / macOS) для кабинета репетитора.
+   Действует ТОЛЬКО внутри #view-teacher. Подключается последним.
+   Чтобы отключить дизайн — удалите <link> на этот файл в index.html.
+--------------------------------------------------------- */
+
+/* ============ ПЕРЕМЕННЫЕ (тёмная тема по умолчанию) ============ */
+#view-teacher{
+  --serif: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', system-ui, Helvetica, Arial, sans-serif;
+  --sans:  -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, Helvetica, Arial, sans-serif;
+
+  --glass:         rgba(30, 52, 64, 0.52);
+  --glass-strong:  rgba(40, 68, 82, 0.72);
+  --glass-hover:   rgba(255, 255, 255, 0.08);
+  --glass-border:  rgba(255, 255, 255, 0.14);
+  --glass-shine:   rgba(255, 255, 255, 0.16);
+  --field:         rgba(255, 255, 255, 0.07);
+  --seg-active:    rgba(255, 255, 255, 0.18);
+  --glass-shadow:  0 10px 34px rgba(0, 0, 0, 0.30);
+  --blur:          blur(22px) saturate(170%);
+
+  --r-lg: 22px;
+  --r-md: 14px;
+  --r-sm: 10px;
+
+  color-scheme: dark;
+}
+
+[data-theme="light"] #view-teacher{
+  --glass:         rgba(255, 255, 255, 0.58);
+  --glass-strong:  rgba(255, 255, 255, 0.82);
+  --glass-hover:   rgba(0, 0, 0, 0.05);
+  --glass-border:  rgba(255, 255, 255, 0.85);
+  --glass-shine:   rgba(255, 255, 255, 0.9);
+  --field:         rgba(255, 255, 255, 0.7);
+  --seg-active:    #ffffff;
+  --glass-shadow:  0 10px 34px rgba(90, 70, 30, 0.14);
+
+  color-scheme: light;
+}
+
+/* ============ ФОН: мягкие цветные пятна под стеклом ============ */
+#view-teacher::before{
+  content: "";
+  position: fixed;
+  inset: -12%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(520px 420px at 12% 14%, rgba(224, 169, 76, 0.30), transparent 70%),
+    radial-gradient(560px 460px at 88% 20%, rgba(80, 130, 255, 0.24), transparent 70%),
+    radial-gradient(620px 520px at 72% 92%, rgba(111, 169, 138, 0.26), transparent 70%),
+    radial-gradient(480px 400px at 6% 86%,  rgba(190, 110, 200, 0.18), transparent 70%);
+  animation: glassDrift 28s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+[data-theme="light"] #view-teacher::before{
+  opacity: 0.75;
+}
+
+@keyframes glassDrift{
+  from{ transform: translate3d(-1.5%, -1%, 0) scale(1); }
+  to  { transform: translate3d(1.5%, 1.5%, 0) scale(1.06); }
+}
+
+/* ============ БОКОВОЕ МЕНЮ ============ */
+#view-teacher .dash-layout{
+  gap: 22px;
+}
+
+#view-teacher .dash-sidebar{
+  width: 224px;
+  gap: 2px;
+  padding: 8px;
+  background: var(--glass);
+  -webkit-backdrop-filter: var(--blur);
+  backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-shine);
+  top: 16px;
+}
+
+#view-teacher .dash-nav-item{
+  padding: 11px 14px;
+  border-radius: var(--r-md);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ink-dim);
+  transition: background .2s ease, color .2s ease, transform .15s ease, box-shadow .2s ease;
+}
+
+#view-teacher .dash-nav-item:hover{
+  background: var(--glass-hover);
+  color: var(--ink);
+}
+
+#view-teacher .dash-nav-item:active{
+  transform: scale(0.97);
+}
+
+#view-teacher .dash-nav-item.active{
+  background: var(--accent);
+  color: #1c1305;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(224, 169, 76, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* ============ ЗАГОЛОВКИ ============ */
+#view-teacher .breadcrumb{
+  font-size: 12.5px;
+  letter-spacing: 0.01em;
+  margin-bottom: 8px;
+}
+
+#view-teacher .dash-title{
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin: 0 0 6px;
+}
+
+#view-teacher .dash-subtitle{
+  font-size: 15px;
+  margin: 0 0 24px;
+  letter-spacing: -0.01em;
+}
+
+#view-teacher label{
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+/* ============ СТЕКЛЯННЫЕ КАРТОЧКИ И ПАНЕЛИ ============ */
+#view-teacher .panel,
+#view-teacher .step-card,
+#view-teacher .create-summary,
+#view-teacher .user-bar,
+#view-teacher .info-card,
+#view-teacher .info-row,
+#view-teacher .stat-card,
+#view-teacher .student-card,
+#view-teacher .cert-student-card{
+  background: var(--glass);
+  -webkit-backdrop-filter: var(--blur);
+  backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-shine);
+}
+
+#view-teacher .panel{ padding: 26px; }
+#view-teacher .step-card{ padding: 18px; border-radius: 18px; }
+#view-teacher .create-summary{ padding: 22px; top: 16px; }
+#view-teacher .student-card,
+#view-teacher .cert-student-card{ padding: 18px 20px; }
+
+#view-teacher .user-bar{
+  border-radius: 16px;
+  padding: 11px 18px;
+}
+
+#view-teacher .step-card-icon{
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(224, 169, 76, 0.30), rgba(224, 169, 76, 0.10));
+  box-shadow: inset 0 1px 0 var(--glass-shine);
+}
+
+#view-teacher .step-card-body label{
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+
+#view-teacher .section-card,
+#view-teacher .cert-test-row{
+  border-radius: var(--r-md);
+}
+
+#view-teacher .section-card{
+  background: var(--field);
+  border: 1px solid var(--glass-border);
+  transition: transform .15s ease, background .2s ease, border-color .2s ease;
+}
+
+#view-teacher .section-card:hover{
+  transform: translateY(-2px);
+}
+
+/* Новости («Информация») — без цветной полоски, в стиле стекла */
+#view-teacher .info-card{
+  border-left: 1px solid var(--glass-border);
+  padding: 20px 22px;
+  margin-bottom: 14px;
+  transition: transform .2s ease;
+}
+
+#view-teacher .info-card:hover{
+  transform: translateY(-2px);
+}
+
+#view-teacher .info-title{
+  font-size: 18px;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+}
+
+#view-teacher .info-badge{
+  font-weight: 600;
+  padding: 4px 11px;
+}
+
+/* ============ ПОЛЯ ВВОДА ============ */
+#view-teacher select,
+#view-teacher input[type=text],
+#view-teacher input[type=password],
+#view-teacher input[type=date],
+#view-teacher textarea{
+  width: 100%;
+  background: var(--field);
+  border: 1px solid var(--glass-border);
+  color: var(--ink);
+  border-radius: var(--r-md);
+  padding: 12px 14px;
+  font-size: 15px;
+  font-family: var(--sans);
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+/* у textarea в разметке есть inline-стили — перекрываем их */
+#view-teacher textarea{
+  background: var(--field) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--r-md) !important;
+  padding: 12px 14px !important;
+  font-size: 15px !important;
+}
+
+#view-teacher select:focus,
+#view-teacher input:focus,
+#view-teacher textarea:focus{
+  outline: none;
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 4px rgba(224, 169, 76, 0.22);
+  background: var(--glass-strong) !important;
+}
+
+#view-teacher select{
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 38px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%238e8e93' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+/* ============ КНОПКИ ============ */
+#view-teacher button.primary{
+  background: var(--accent);
+  color: #1c1305;
+  border: none;
+  border-radius: var(--r-md);
+  padding: 13px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  box-shadow: 0 6px 18px rgba(224, 169, 76, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.38);
+  transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+#view-teacher button.primary:hover{
+  filter: brightness(1.06);
+  box-shadow: 0 8px 22px rgba(224, 169, 76, 0.46), inset 0 1px 0 rgba(255, 255, 255, 0.38);
+}
+
+#view-teacher button.primary:active{
+  transform: scale(0.97);
+}
+
+#view-teacher button.secondary{
+  background: var(--glass);
+  -webkit-backdrop-filter: var(--blur);
+  backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-border);
+  color: var(--ink);
+  border-radius: var(--r-md);
+  padding: 11px 20px;
+  font-size: 14.5px;
+  font-weight: 500;
+  box-shadow: inset 0 1px 0 var(--glass-shine);
+  transition: transform .15s ease, background .2s ease;
+}
+
+#view-teacher button.secondary:hover{
+  background: var(--glass-strong);
+  border-color: var(--glass-border);
+}
+
+#view-teacher button.secondary:active{
+  transform: scale(0.97);
+}
+
+#view-teacher button.small{
+  padding: 7px 14px;
+  font-size: 13px;
+  border-radius: var(--r-sm);
+}
+
+#view-teacher .back-link{
+  font-weight: 500;
+}
+
+/* ============ СЕГМЕНТИРОВАННЫЙ ПЕРЕКЛЮЧАТЕЛЬ (подвкладки админки) ============ */
+#view-teacher .tabs{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 4px;
+  max-width: 100%;
+  background: var(--field);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  margin-bottom: 22px;
+}
+
+#view-teacher .tab-btn{
+  flex-shrink: 0;
+  white-space: nowrap;
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  padding: 9px 15px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink-dim);
+  transition: background .2s ease, color .2s ease, box-shadow .2s ease;
+}
+
+#view-teacher .tab-btn:hover{
+  color: var(--ink);
+  border: none;
+}
+
+#view-teacher .tab-btn.active{
+  background: var(--seg-active);
+  color: var(--ink);
+  font-weight: 600;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18), inset 0 1px 0 var(--glass-shine);
+}
+
+[data-theme="light"] #view-teacher .tab-btn.active{
+  color: #1c1c1e;
+}
+
+/* ============ ТАБЛИЦЫ ============ */
+#resultsTableWrap,
+#certsWrap{
+  overflow-x: auto;
+}
+
+#view-teacher table{
+  font-size: 14px;
+}
+
+#view-teacher th{
+  font-size: 11.5px;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+#view-teacher td{
+  border-bottom: 1px solid var(--glass-border);
+}
+
+#view-teacher tbody tr{
+  transition: background .15s ease;
+}
+
+#view-teacher tbody tr:hover{
+  background: var(--glass-hover);
+}
+
+/* ============ ЗАПАСНОЙ ВАРИАНТ БЕЗ BACKDROP-FILTER ============ */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))){
+  #view-teacher{
+    --glass: var(--bg-panel);
+    --glass-strong: var(--bg-panel-2);
+  }
+}
+
+/* ============ УМЕНЬШЕННЫЕ АНИМАЦИИ ============ */
+@media (prefers-reduced-motion: reduce){
+  #view-teacher::before{ animation: none; }
+  #view-teacher *{ transition: none !important; }
+}
+
+/* ============ ТЕЛЕФОН ============ */
+@media (max-width: 760px){
+
+  /* меню — закреплённая стеклянная полоса с прокруткой */
+  #view-teacher .dash-layout{
+    gap: 14px;
+  }
+
+  #view-teacher .dash-sidebar{
+    position: sticky;
+    top: 8px;
+    z-index: 30;
+    width: 100%;
+    flex-direction: row;
+    gap: 4px;
+    padding: 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    border-radius: 20px;
+  }
+
+  #view-teacher .dash-sidebar::-webkit-scrollbar{ display: none; }
+
+  #view-teacher .dash-nav-item{
+    width: auto;
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 11px 15px;
+    border-radius: 14px;
+  }
+
+  /* подвкладки админки — в одну строку с прокруткой */
+  #view-teacher .tabs{
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  #view-teacher .tabs::-webkit-scrollbar{ display: none; }
+
+  #view-teacher .dash-title{ font-size: 26px; }
+  #view-teacher .dash-subtitle{ font-size: 14px; margin-bottom: 18px; }
+
+  #view-teacher .panel{ padding: 18px; border-radius: 20px; }
+  #view-teacher .create-summary{ position: static; }
+
+  /* 16px в полях — чтобы iPhone не приближал страницу при вводе */
+  #view-teacher select,
+  #view-teacher input[type=text],
+  #view-teacher input[type=password],
+  #view-teacher input[type=date],
+  #view-teacher textarea{
+    font-size: 16px !important;
+    min-height: 46px;
+  }
+
+  /* кнопки под палец */
+  #view-teacher button.primary,
+  #view-teacher button.secondary{
+    min-height: 46px;
+  }
+
+  #view-teacher button.small{
+    min-height: 38px;
+  }
+
+  #view-teacher .user-bar{
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  #view-teacher .cert-test-row{
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
