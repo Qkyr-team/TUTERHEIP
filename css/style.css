@@ -1,0 +1,138 @@
+
+*{
+  box-sizing:border-box;
+}
+
+html,body{
+  margin:0;
+  padding:0;
+}
+
+body{
+  background:
+    radial-gradient(circle at 15% 10%, rgba(224,169,76,0.06), transparent 40%),
+    radial-gradient(circle at 85% 90%, rgba(111,169,138,0.06), transparent 45%),
+    var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  min-height:100vh;
+}
+
+.shell{
+  max-width:980px;
+  margin:0 auto;
+  padding:28px 20px 60px;
+}
+
+.hidden{
+  display:none !important;
+}
+
+label{
+  display:block;
+  font-size:12.5px;
+  color:var(--ink-dim);
+  margin:14px 0 6px;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+}
+
+select,
+input[type=text],
+input[type=password]{
+  width:100%;
+  background:var(--bg);
+  border:1px solid var(--border);
+  color:var(--ink);
+  padding:11px 12px;
+  border-radius:7px;
+  font-size:14.5px;
+  font-family:var(--sans);
+}
+
+select:focus,
+input:focus{
+  outline:none;
+  border-color:var(--accent);
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:6px;
+  font-size:13.5px;
+}
+
+th,
+td{
+  padding:10px 8px;
+  text-align:left;
+  border-bottom:1px solid var(--border);
+}
+
+th{
+  color:var(--ink-dim);
+  font-weight:600;
+  text-transform:uppercase;
+  font-size:11.5px;
+  letter-spacing:0.04em;
+}
+
+button.primary{
+  margin-top:20px;
+  background:var(--accent);
+  color:#1c1305;
+  border:none;
+  padding:12px 22px;
+  border-radius:7px;
+  font-size:14.5px;
+  font-weight:700;
+  cursor:pointer;
+  letter-spacing:0.02em;
+  font-family:var(--sans);
+}
+
+button.primary:hover{
+  filter:brightness(1.08);
+}
+
+button.secondary{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--ink);
+  padding:10px 18px;
+  border-radius:7px;
+  cursor:pointer;
+  font-size:13.5px;
+  font-family:var(--sans);
+}
+
+button.secondary:hover{
+  border-color:var(--accent-dim);
+}
+
+button.small{
+  padding:6px 12px;
+  font-size:12.5px;
+  border-radius:6px;
+}
+
+.hint{
+  color:var(--ink-dim);
+  font-size:12.5px;
+  margin-top:6px;
+}
+
+.hint a{
+  color:var(--accent);
+  text-decoration:underline;
+  cursor:pointer;
+}
+
+.footer-note{
+  margin-top:36px;
+  color:var(--ink-dim);
+  font-size:12px;
+  text-align:center;
+  line-height:1.6;
+}
