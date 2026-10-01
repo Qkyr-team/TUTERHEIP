@@ -331,7 +331,7 @@
 
     <button class="back-link" onclick="goHome()">← на главную</button>
 
-    <div id="teacher-dashboard">
+    <div id="teacher-root">
 
       <div class="user-bar">
         <span id="teacherEmailLabel"></span>
@@ -346,14 +346,14 @@
       <div id="teacher-tabs-and-panels" class="dash-layout">
 
         <aside class="dash-sidebar">
-          <button class="dash-nav-item" data-tab="info" onclick="setTeacherTab('info')">
-          📢 Информация
-          </button>
-          
+
           <button class="dash-nav-item" data-tab="dashboard" onclick="setTeacherTab('dashboard')">
           🏠 Dashboard
           </button>
-          
+          <button class="dash-nav-item" data-tab="info" onclick="setTeacherTab('info')">
+            📢 Информация
+          </button>
+
           <button class="dash-nav-item" data-tab="create" onclick="setTeacherTab('create')">
             ➕ Создать код
           </button>
@@ -390,14 +390,30 @@
           <div class="breadcrumb">
             Главная <span>›</span> <span id="dashBreadcrumbCurrent">Создать код</span>
           </div>
+          <!-- Teacher Dashboard -->
+  <div id="teacher-dashboard" class="hidden">
 
-          <!-- Teacher Info -->
-  <div id="teacher-info" class="hidden">
-    <h2 class="dash-title">Информация для репетиторов</h2>
-    <p class="dash-subtitle">Новости платформы, обновления и полезные советы</p>
-    <div id="teacherInfoWrap"></div>
+  <h2 class="dash-title">Dashboard</h2>
+
+  <p class="dash-subtitle">
+    Добро пожаловать в ваш кабинет репетитора
+  </p>
+
+  <div class="panel">
+    <h3>Обзор</h3>
+    <p class="hint">
+      Здесь будет размещён основной обзор вашей работы с учениками.
+    </p>
   </div>
 
+</div>
+
+          <!-- Teacher Info -->
+          <div id="teacher-info" class="hidden">
+            <h2 class="dash-title">Информация для репетиторов</h2>
+            <p class="dash-subtitle">Новости платформы, обновления и полезные советы</p>
+            <div id="teacherInfoWrap"></div>
+          </div>
 
           <!-- Create code -->
           <div id="teacher-create">
@@ -1274,9 +1290,9 @@
 
 <script src="js/app.js"></script>
 <script src="js/components.js"></script>
+<script src="js/teacher-info.js"></script>
 <script src="js/pages.js"></script>
 <script src="theme/theme.js"></script>
-<script srs="js/teacher-info.js"></script>
 
 </body>
 </html>
