@@ -819,6 +819,10 @@
                 Сертификат
               </button>
 
+             <button class="tab-btn" data-subtab="news" onclick="setAdminSubTab('news')">
+                📢 Новости
+              </button>
+
               <button class="tab-btn" data-subtab="platform" onclick="setAdminSubTab('platform')">
                 ⚙️ Настройки платформы
               </button>
@@ -995,6 +999,53 @@
               </button>
 
               <p class="hint" id="certTemplateError"></p>
+
+            </div>
+
+            <!-- News -->
+            <div id="admin-news" class="hidden">
+
+              <h3 style="font-family:var(--serif);font-size:16px;">
+                Новости для репетиторов
+              </h3>
+
+              <p class="hint" style="margin-bottom:14px;">
+                Публикации видны репетиторам во вкладке «Информация». В тексте можно использовать HTML: &lt;b&gt;жирный&lt;/b&gt;, &lt;a href="..."&gt;ссылка&lt;/a&gt;, &lt;br&gt; для переноса строки.
+              </p>
+
+              <h4 id="newsFormTitle" style="font-family:var(--serif);font-size:15px;margin:0 0 6px;">
+                Новая публикация
+              </h4>
+
+              <label for="newsTitle">Заголовок</label>
+              <input type="text" id="newsTitle" placeholder="Например: Добавлены тесты по Present Perfect">
+
+              <label for="newsTag">Метка</label>
+              <select id="newsTag">
+                <option value="new">Новое</option>
+                <option value="important">Важно</option>
+                <option value="tip">Совет</option>
+              </select>
+
+              <label for="newsDate">Дата</label>
+              <input type="date" id="newsDate">
+
+              <label for="newsText">Текст</label>
+              <textarea id="newsText" rows="5"
+                style="width:100%;background:var(--bg);border:1px solid var(--border);color:var(--ink);border-radius:7px;padding:10px;font-family:var(--sans);font-size:14px;"></textarea>
+
+              <div style="margin-top:14px;">
+                <button class="primary" onclick="saveNews()">Опубликовать</button>
+                <button class="secondary hidden" id="newsCancelBtn" onclick="resetNewsForm()">Отменить редактирование</button>
+              </div>
+
+              <p class="hint" id="newsFormError"></p>
+
+              <h3 style="font-family:var(--serif);font-size:16px;margin-top:26px;">
+                Опубликованные
+              </h3>
+
+              <div id="newsListWrap"></div>
 
             </div>
 
