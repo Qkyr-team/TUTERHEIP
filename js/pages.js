@@ -1,5 +1,3 @@
-
-
 /* ---------------------------------------------------------
    НАВИГАЦИЯ
 --------------------------------------------------------- */
@@ -139,7 +137,7 @@ function setTeacherTab(tab){
   document.querySelectorAll('#teacher-tabs-and-panels .dash-nav-item')
     .forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
 
-    ['dashboard','tests','books','teachers','students','certificate','news','platform'].forEach(t=>{
+  ['dashboard','info','create','results','certs','students','vocab','account','admin'].forEach(t=>{
     const el = document.getElementById('teacher-'+t);
     if(el) el.classList.toggle('hidden', t !== tab);
   });
@@ -163,7 +161,6 @@ function setTeacherTab(tab){
     // Dashboard пока подключён без дополнительной логики.
   }
 
-  if(tab==='news') loadAdminNews();
   if(tab === 'info') renderTeacherInfo();
   if(tab === 'create') populateTestSelect();
   if(tab === 'results') renderResultsTable();
@@ -1442,7 +1439,7 @@ function updateTeacherSummary(){
 --------------------------------------------------------- */
 function setAdminSubTab(tab){
   document.querySelectorAll('#admin-subtabs .tab-btn').forEach(b=>b.classList.toggle('active', b.dataset.subtab===tab));
-  ['dashboard','tests','books','teachers','students','certificate','platform'].forEach(t=>{
+  ['dashboard','tests','books','teachers','students','certificate','news','platform'].forEach(t=>{
     document.getElementById('admin-'+t).classList.toggle('hidden', t!==tab);
   });
   if(tab==='dashboard') loadAdminDashboard();
@@ -1451,6 +1448,7 @@ function setAdminSubTab(tab){
   if(tab==='teachers') loadAdminTeachers();
   if(tab==='students') loadAdminStudents();
   if(tab==='certificate') loadCertificateTemplatePanel();
+  if(tab==='news') loadAdminNews();
   if(tab==='platform') loadPlatformSettingsForm(platformSettings);
 }
 
