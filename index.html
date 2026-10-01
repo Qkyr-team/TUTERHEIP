@@ -717,74 +717,154 @@
           <div id="teacher-account" class="hidden">
 
             <h2 class="dash-title">Аккаунт</h2>
+            <p class="dash-subtitle">Профиль, подпись на сертификатах и безопасность</p>
 
-            <p class="dash-subtitle">
-              Вы вошли как <b id="settingsEmailLabel"></b>
+            <!-- Профиль -->
+            <section class="panel acct-profile" aria-label="Профиль">
+              <div class="acct-avatar" id="acctAvatar" aria-hidden="true">?</div>
+              <div class="acct-profile-main">
+                <div class="acct-profile-name" id="acctProfileName"></div>
+                <div class="acct-profile-email" id="acctProfileEmail"></div>
+                <div class="acct-chips">
+                  <span class="acct-chip is-role" id="acctRoleChip"></span>
+                  <span class="acct-chip hidden" id="acctProviderChip"></span>
+                  <span class="acct-chip hidden" id="acctSinceChip"></span>
+                </div>
+              </div>
+            </section>
+
+            <!-- Активность -->
+            <h3 class="acct-h">Моя активность</h3>
+            <div class="acct-stats" aria-live="polite">
+              <div class="stat-card">
+                <div class="stat-num" id="acctStatCodes">—</div>
+                <div class="stat-label">Кодов создано</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-num" id="acctStatDone">—</div>
+                <div class="stat-label">Тестов завершено</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-num" id="acctStatStudents">—</div>
+                <div class="stat-label">Учеников</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-num" id="acctStatCerts">—</div>
+                <div class="stat-label">Сертификатов выдано</div>
+              </div>
+            </div>
+            <p class="hint hidden" id="acctStatsError" role="status">
+              Не удалось загрузить статистику. Проверьте интернет-соединение.
+              <button type="button" class="secondary small" onclick="loadAccountStats()">Повторить</button>
             </p>
+            <p class="hint hidden" id="acctStatsEmpty">
+              Вы пока не создавали коды. Откройте «Создать код», чтобы отправить первый тест ученику.
+              <button type="button" class="secondary small" onclick="setTeacherTab('create')">Создать код</button>
+            </p>
+
+            <!-- Профиль и подпись -->
+            <h3 class="acct-h">Профиль и подпись</h3>
 
             <div class="step-card">
               <div class="step-card-icon">🧑</div>
               <div class="step-card-body">
-                <label>Отображаемое имя</label>
-                <p class="step-hint">Видно вам в кабинете вместо email</p>
-                <input type="text" id="acctDisplayName" placeholder="Например: Максим Орехов">
+                <label for="acctDisplayName">Отображаемое имя</label>
+                <p class="step-hint">Показывается вам в кабинете вместо email</p>
+                <input type="text" id="acctDisplayName" maxlength="60" autocomplete="name"
+                       placeholder="Например: Максим Орехов" oninput="onAcctFormInput()">
               </div>
             </div>
 
             <div class="step-card">
               <div class="step-card-icon">✍️</div>
               <div class="step-card-body">
-                <label>Подпись на сертификатах</label>
+                <label for="acctCertSignature">Подпись на сертификатах</label>
                 <p class="step-hint">
-                  Печатается в поле «Подпись репетитора» на сертификатах ваших учеников
+                  Печатается под линией подписи на сертификатах ваших учеников
                 </p>
-                <input type="text" id="acctCertSignature" placeholder="Например: Орехов М.А.">
+                <input type="text" id="acctCertSignature" maxlength="40"
+                       placeholder="Например: Орехов М.А." oninput="onAcctFormInput()">
+                <span class="acct-counter" id="acctSigCounter">0 / 40</span>
+
+                <div class="acct-sigpreview" aria-label="Предпросмотр подписи на сертификате">
+                  <div class="acct-sig-line"></div>
+                  <div class="acct-sig-name" id="acctSigPreviewName"></div>
+                  <div class="acct-sig-role" id="acctSigPreviewRole"></div>
+                </div>
+                <p class="hint" id="acctSigPreviewHint"></p>
               </div>
             </div>
 
-            <button class="primary" onclick="saveAccountSettings()">Сохранить</button>
-            <p class="hint" id="acctSaveMsg"></p>
+            <div class="acct-actions">
+              <button class="primary" id="acctSaveBtn" onclick="saveAccountSettings()" disabled>Сохранить</button>
+              <span class="hint" id="acctSaveMsg" role="status" aria-live="polite"></span>
+            </div>
 
-            <div id="acctPasswordSection" style="margin-top:26px;">
+            <!-- Безопасность (только для входа по email и паролю) -->
+            <div id="acctPasswordSection">
 
-              <h3 style="font-family:var(--serif);font-size:15px;margin:0 0 4px;">
-                Смена пароля
-              </h3>
+              <h3 class="acct-h">Безопасность</h3>
 
               <div class="step-card">
                 <div class="step-card-icon">🔒</div>
                 <div class="step-card-body">
-                  <label>Текущий пароль</label>
-                  <input type="password" id="acctCurrentPassword" placeholder="Введите текущий пароль">
+                  <label for="acctCurrentPassword">Текущий пароль</label>
+                  <div class="acct-pass">
+                    <input type="password" id="acctCurrentPassword" autocomplete="current-password">
+                    <button type="button" class="acct-eye" data-target="acctCurrentPassword"
+                            aria-pressed="false" aria-label="Показать пароль"
+                            onclick="toggleAcctPassword(this)">Показать</button>
+                  </div>
+                  <button type="button" class="acct-link" id="acctResetBtn"
+                          onclick="sendAccountPasswordReset()">Не помните пароль? Отправить письмо для сброса</button>
                 </div>
               </div>
 
               <div class="step-card">
                 <div class="step-card-icon">🔑</div>
                 <div class="step-card-body">
-                  <label>Новый пароль</label>
-                  <input type="password" id="acctNewPassword" placeholder="Минимум 6 символов">
+                  <label for="acctNewPassword">Новый пароль</label>
+                  <p class="step-hint">Минимум 6 символов. Надёжнее — от 10, с буквами и цифрами</p>
+                  <div class="acct-pass">
+                    <input type="password" id="acctNewPassword" autocomplete="new-password" oninput="onAcctPasswordInput()">
+                    <button type="button" class="acct-eye" data-target="acctNewPassword"
+                            aria-pressed="false" aria-label="Показать пароль"
+                            onclick="toggleAcctPassword(this)">Показать</button>
+                  </div>
+                  <div class="acct-meter" aria-hidden="true">
+                    <div class="acct-meter-fill" id="acctMeterFill"></div>
+                  </div>
+                  <p class="hint" id="acctMeterText" aria-live="polite"></p>
                 </div>
               </div>
 
-              <button class="secondary" onclick="changeAccountPassword()">
-                Сменить пароль
-              </button>
+              <div class="step-card">
+                <div class="step-card-icon">✅</div>
+                <div class="step-card-body">
+                  <label for="acctConfirmPassword">Повторите новый пароль</label>
+                  <div class="acct-pass">
+                    <input type="password" id="acctConfirmPassword" autocomplete="new-password" oninput="onAcctPasswordInput()">
+                    <button type="button" class="acct-eye" data-target="acctConfirmPassword"
+                            aria-pressed="false" aria-label="Показать пароль"
+                            onclick="toggleAcctPassword(this)">Показать</button>
+                  </div>
+                </div>
+              </div>
 
-              <p class="hint" id="acctPasswordMsg"></p>
+              <div class="acct-actions">
+                <button class="secondary" id="acctPassBtn" onclick="changeAccountPassword()">Сменить пароль</button>
+                <span class="hint" id="acctPasswordMsg" role="status" aria-live="polite"></span>
+              </div>
 
             </div>
 
             <p class="hint" id="acctPasswordNote"></p>
 
-            <div style="margin-top:24px;">
-              <button class="secondary" onclick="toggleTheme()">
-                Сменить тему оформления
-              </button>
-
-              <button class="secondary" style="margin-left:8px;" onclick="signOutTeacher()">
-                Выйти из аккаунта
-              </button>
+            <!-- Оформление и выход -->
+            <h3 class="acct-h">Оформление и сессия</h3>
+            <div class="acct-actions">
+              <button class="secondary" onclick="toggleTheme()">Сменить тему оформления</button>
+              <button class="secondary" onclick="signOutTeacher()">Выйти из аккаунта</button>
             </div>
 
           </div>
