@@ -476,3 +476,217 @@
     gap: 8px;
   }
 }
+/* =========================================================
+   МОБИЛЬНАЯ НАВИГАЦИЯ: нижняя панель + «Ещё»
+   Добавить В САМЫЙ КОНЕЦ theme/apple.css (должно идти после
+   блока «ТЕЛЕФОН», чтобы переопределить старую полосу сверху).
+========================================================= */
+
+/* на компьютере кнопка «Ещё» и затемнение не нужны */
+.dash-more-btn,
+.dash-more-scrim{
+  display: none;
+}
+
+@media (max-width: 760px){
+
+  /* место под панель, чтобы она не закрывала конец страницы */
+  #view-teacher .dash-layout{
+    padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* --- сама панель: закреплена внизу, при «Ещё» растёт вверх --- */
+  #view-teacher .dash-sidebar{
+    position: fixed;
+    top: auto;
+    left: 8px;
+    right: 8px;
+    bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+    z-index: 60;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 2px;
+    padding: 6px;
+    overflow: visible;
+    border-radius: 24px;
+    /* почти непрозрачный фон: текст страницы не просвечивает под подписями */
+    background: var(--bg-panel);
+    background: color-mix(in srgb, var(--bg-panel) 95%, transparent);
+    transition: transform .2s ease, opacity .2s ease;
+  }
+
+  #view-teacher .dash-sidebar.more-open{
+    max-height: calc(100vh - 24px);
+    max-height: calc(100dvh - 24px);
+    overflow-y: auto;
+  }
+
+  /* пока вводится текст — панель прячется (клавиатура не двигает её) */
+  #view-teacher .dash-sidebar.kbd-open{
+    transform: translateY(calc(100% + 24px));
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+  }
+
+  /* --- пункты «Ещё»: строки списка над панелью --- */
+  #view-teacher .dash-nav-item{
+    order: 1;
+    flex: 0 0 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 48px;
+    padding: 10px 14px;
+    border-radius: 16px;
+    white-space: normal;
+    font-size: 15px;
+  }
+
+  #view-teacher .dash-nav-item .nav-ico{
+    font-size: 20px;
+    line-height: 1;
+    width: 26px;
+    text-align: center;
+  }
+
+  #view-teacher .dash-nav-item.nav-more{
+    display: none;
+  }
+
+  #view-teacher .dash-sidebar.more-open .dash-nav-item.nav-more{
+    display: flex;
+  }
+
+  /* --- нижний ряд: 4 главных пункта + «Ещё» --- */
+  #view-teacher .dash-nav-item.nav-main,
+  #view-teacher .dash-more-btn{
+    order: 2;
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+    min-height: 60px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    padding: 7px 1px;
+    border-radius: 18px;
+    font-size: 10px;
+    text-align: center;
+  }
+
+  #view-teacher .dash-nav-item.nav-main .nav-ico,
+  #view-teacher .dash-more-btn .nav-ico{
+    width: auto;
+  }
+
+  /* подписи в панели переносятся на вторую строку, а не обрезаются */
+  #view-teacher .dash-nav-item.nav-main .nav-lbl,
+  #view-teacher .dash-more-btn .nav-lbl{
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: normal;
+    word-break: normal;
+    line-height: 1.15;
+    font-size: 10px;
+    letter-spacing: -0.02em;
+  }
+
+  /* кнопка «Ещё» */
+  #view-teacher .dash-more-btn{
+    position: relative;
+    display: flex;
+    background: none;
+    border: none;
+    color: var(--ink-dim);
+    font-family: var(--sans);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: background .2s ease, color .2s ease, transform .15s ease;
+  }
+
+  #view-teacher .dash-more-btn:active{
+    transform: scale(0.97);
+  }
+
+  #view-teacher .dash-more-btn[aria-expanded="true"]{
+    background: var(--glass-hover);
+    color: var(--ink);
+  }
+
+  /* точка: открыта вкладка из группы «Ещё» */
+  #view-teacher .dash-more-btn.has-active{
+    color: var(--ink);
+  }
+
+  #view-teacher .dash-more-btn.has-active::after{
+    content: '';
+    position: absolute;
+    top: 9px;
+    left: calc(50% + 10px);
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  #view-teacher .dash-nav-item:focus-visible,
+  #view-teacher .dash-more-btn:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+
+  /* --- затемнение под открытым «Ещё» --- */
+  .dash-more-scrim{
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 55;
+    background: rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+  }
+
+  .dash-more-scrim.is-open{
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* уведомления поднимаем над панелью (только в кабинете репетитора) */
+  body:has(#view-teacher:not(.hidden) #teacher-tabs-and-panels:not(.hidden)) #toastWrap{
+    bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+    left: 12px;
+    right: 12px;
+    align-items: flex-end;
+  }
+}
+
+/* совсем узкие экраны (320px): чуть уже поля, чтобы «Результаты» помещалось */
+@media (max-width: 340px){
+  #view-teacher .dash-sidebar{
+    left: 4px;
+    right: 4px;
+    padding: 4px;
+    gap: 0;
+  }
+
+  #view-teacher .dash-nav-item.nav-main .nav-lbl,
+  #view-teacher .dash-more-btn .nav-lbl{
+    letter-spacing: -0.03em;
+  }
+}
+
+@media (max-width: 760px) and (prefers-reduced-motion: reduce){
+  #view-teacher .dash-sidebar,
+  .dash-more-scrim{
+    transition: none !important;
+  }
+}

@@ -346,42 +346,51 @@
 
       <div id="teacher-tabs-and-panels" class="dash-layout">
 
-        <aside class="dash-sidebar">
+        <!-- Затемнение под меню «Ещё» (только телефон) -->
+        <div class="dash-more-scrim" id="navMoreScrim" onclick="closeNavMore()"></div>
 
-          <button class="dash-nav-item" data-tab="dashboard" onclick="setTeacherTab('dashboard')">
-          🏠 Dashboard
-          </button>
-          <button class="dash-nav-item" data-tab="info" onclick="setTeacherTab('info')">
-            📢 Информация
-          </button>
+        <aside class="dash-sidebar" id="dashSidebar" aria-label="Разделы кабинета">
 
-          <button class="dash-nav-item" data-tab="create" onclick="setTeacherTab('create')">
-            ➕ Создать код
+          <button class="dash-nav-item nav-more" data-tab="dashboard" onclick="setTeacherTab('dashboard')">
+            <span class="nav-ico" aria-hidden="true">🏠</span> <span class="nav-lbl">Dashboard</span>
           </button>
 
-          <button class="dash-nav-item" data-tab="results" onclick="setTeacherTab('results')">
-            📊 Результаты
+          <button class="dash-nav-item nav-more" data-tab="info" onclick="setTeacherTab('info')">
+            <span class="nav-ico" aria-hidden="true">📢</span> <span class="nav-lbl">Информация</span>
           </button>
 
-          <button class="dash-nav-item" data-tab="certs" onclick="setTeacherTab('certs')">
-            📄 Выдать сертификат
+          <button class="dash-nav-item nav-main" data-tab="create" onclick="setTeacherTab('create')">
+            <span class="nav-ico" aria-hidden="true">➕</span> <span class="nav-lbl">Создать код</span>
           </button>
 
-          <button class="dash-nav-item" data-tab="students" onclick="setTeacherTab('students')">
-            🎓 Мои ученики
+          <button class="dash-nav-item nav-main" data-tab="results" onclick="setTeacherTab('results')">
+            <span class="nav-ico" aria-hidden="true">📊</span> <span class="nav-lbl">Результаты</span>
           </button>
 
-          <button class="dash-nav-item" data-tab="vocab" onclick="setTeacherTab('vocab')">
-            📚 Лексика
+          <button class="dash-nav-item nav-more" data-tab="certs" onclick="setTeacherTab('certs')">
+            <span class="nav-ico" aria-hidden="true">📄</span> <span class="nav-lbl">Выдать сертификат</span>
           </button>
 
-
-          <button class="dash-nav-item" data-tab="account" onclick="setTeacherTab('account')">
-            👤 Аккаунт
+          <button class="dash-nav-item nav-main" data-tab="students" onclick="setTeacherTab('students')">
+            <span class="nav-ico" aria-hidden="true">🎓</span> <span class="nav-lbl">Мои ученики</span>
           </button>
 
-          <button class="dash-nav-item hidden" data-tab="admin" id="adminTabBtn" onclick="setTeacherTab('admin')">
-            👑 Админ
+          <button class="dash-nav-item nav-main" data-tab="vocab" onclick="setTeacherTab('vocab')">
+            <span class="nav-ico" aria-hidden="true">📚</span> <span class="nav-lbl">Лексика</span>
+          </button>
+
+          <button class="dash-nav-item nav-more" data-tab="account" onclick="setTeacherTab('account')">
+            <span class="nav-ico" aria-hidden="true">👤</span> <span class="nav-lbl">Аккаунт</span>
+          </button>
+
+          <button class="dash-nav-item nav-more hidden" data-tab="admin" id="adminTabBtn" onclick="setTeacherTab('admin')">
+            <span class="nav-ico" aria-hidden="true">👑</span> <span class="nav-lbl">Админ</span>
+          </button>
+
+          <!-- Кнопка «Ещё» — видна только на телефоне -->
+          <button type="button" class="dash-more-btn" id="navMoreBtn"
+                  aria-expanded="false" aria-controls="dashSidebar" onclick="toggleNavMore()">
+            <span class="nav-ico" aria-hidden="true">⋯</span> <span class="nav-lbl">Ещё</span>
           </button>
 
         </aside>
