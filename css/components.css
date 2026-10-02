@@ -524,3 +524,94 @@
 @media (prefers-reduced-motion:reduce){
   .acct-meter-fill{ transition:none; }
 }
+
+
+/* =========================================================
+   DASHBOARD РЕПЕТИТОРА
+========================================================= */
+.dash-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:22px;
+}
+
+.dash-actions button{
+  margin-top:0;
+}
+
+.dash-kpis{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-bottom:22px;
+}
+
+.dash-kpis .stat-card{
+  padding:16px 10px;
+}
+
+#teacher-dashboard .panel{
+  margin-bottom:18px;
+}
+
+.dash-sub{
+  font-family:var(--sans);
+  font-size:13px;
+  font-weight:600;
+  color:var(--ink-dim);
+  margin:16px 0 6px;
+}
+
+.dash-sub:first-child{
+  margin-top:0;
+}
+
+.dash-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.dash-item:last-child{
+  border-bottom:none;
+}
+
+.dash-item-main{
+  min-width:0;
+}
+
+.dash-item-title{
+  font-weight:600;
+  overflow-wrap:anywhere;
+}
+
+.dash-item-sub{
+  font-size:12.5px;
+  color:var(--ink-dim);
+  margin-top:2px;
+  overflow-wrap:anywhere;
+}
+
+.dash-item-side{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-shrink:0;
+}
+
+.dash-item-side button{
+  margin-top:0;
+}
+
+@media (max-width:640px){
+  .dash-actions .primary{ flex:1 1 100%; }
+  .dash-actions .secondary{ flex:1 1 calc(50% - 5px); }
+  .dash-kpis{ grid-template-columns:repeat(2,1fr); }
+  .dash-item{ flex-wrap:wrap; }
+  .dash-item-side{ width:100%; }
+  .dash-item-side button{ margin-left:auto; }
+}

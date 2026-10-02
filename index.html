@@ -401,22 +401,62 @@
             Главная <span>›</span> <span id="dashBreadcrumbCurrent">Создать код</span>
           </div>
           <!-- Teacher Dashboard -->
-  <div id="teacher-dashboard" class="hidden">
+          <!-- Dashboard -->
+          <div id="teacher-dashboard" class="hidden">
 
-  <h2 class="dash-title">Dashboard</h2>
+            <h2 class="dash-title">Dashboard</h2>
+            <p class="dash-subtitle">Что происходит у ваших учеников прямо сейчас</p>
 
-  <p class="dash-subtitle">
-    Добро пожаловать в ваш кабинет репетитора
-  </p>
+            <div class="dash-actions">
+              <button class="primary" onclick="setTeacherTab('create')">➕ Создать код</button>
+              <button class="secondary" onclick="setTeacherTab('results')">📊 Результаты</button>
+              <button class="secondary" onclick="setTeacherTab('certs')">📄 Выдать сертификат</button>
+            </div>
 
-  <div class="panel">
-    <h3>Обзор</h3>
-    <p class="hint">
-      Здесь будет размещён основной обзор вашей работы с учениками.
-    </p>
-  </div>
+            <div class="dash-kpis" aria-live="polite">
+              <div class="stat-card">
+                <div class="stat-num" id="dashKpiWaiting">—</div>
+                <div class="stat-label">Ждут проверки</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-num" id="dashKpiActive">—</div>
+                <div class="stat-label">Коды без результата</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-num" id="dashKpiWeek">—</div>
+                <div class="stat-label">Завершено за 7 дней</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-num" id="dashKpiAvg">—</div>
+                <div class="stat-label">Средний результат</div>
+              </div>
+            </div>
 
-</div>
+            <p class="hint hidden" id="dashError" role="status">
+              Не удалось загрузить данные. Проверьте интернет-соединение.
+              <button type="button" class="secondary small" onclick="loadTeacherDashboard()">Повторить</button>
+            </p>
+
+            <div class="panel dash-welcome hidden" id="dashWelcome">
+              <h3>Начните с первого кода</h3>
+              <p class="hint">
+                Выберите тест, введите имя ученика, и платформа создаст код доступа.
+                Когда ученик пройдёт тест, результаты появятся здесь.
+              </p>
+              <button class="primary" onclick="setTeacherTab('create')">Создать первый код</button>
+            </div>
+
+            <div class="panel" id="dashAttentionPanel">
+              <h3>Требует внимания</h3>
+              <div id="dashAttention"><p class="empty-note">Загрузка…</p></div>
+            </div>
+
+            <div class="panel" id="dashRecentPanel">
+              <h3>Последние результаты</h3>
+              <div id="dashRecent"><p class="empty-note">Загрузка…</p></div>
+            </div>
+
+          </div>
 
           <!-- Teacher Info -->
           <div id="teacher-info" class="hidden">
