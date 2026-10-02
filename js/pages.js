@@ -362,6 +362,7 @@ function focusPendingResult(){
 function setTeacherTab(tab){
   document.querySelectorAll('#teacher-tabs-and-panels .dash-nav-item')
     .forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  syncMobileNav(tab);
 
   ['dashboard','info','create','results','certs','students','vocab','account','admin'].forEach(t=>{
     const el = document.getElementById('teacher-'+t);
@@ -2698,7 +2699,6 @@ async function renderResultsTable(){
       <tbody>${rows}</tbody>
     </table>`;
   focusPendingResult();
-}
 }
 function toggleDetail(i){
   document.getElementById('detail-'+i).classList.toggle('hidden');
