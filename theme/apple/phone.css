@@ -1,0 +1,77 @@
+/* theme/apple/phone.css — Телефон */
+/* ============ ТЕЛЕФОН ============ */
+@media (max-width: 760px){
+
+  /* меню — закреплённая стеклянная полоса с прокруткой */
+  #view-teacher .dash-layout{
+    gap: 14px;
+  }
+
+  #view-teacher .dash-sidebar{
+    position: sticky;
+    top: 8px;
+    z-index: 30;
+    width: 100%;
+    flex-direction: row;
+    gap: 4px;
+    padding: 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    border-radius: 20px;
+  }
+
+  #view-teacher .dash-sidebar::-webkit-scrollbar{ display: none; }
+
+  #view-teacher .dash-nav-item{
+    width: auto;
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 11px 15px;
+    border-radius: 14px;
+  }
+
+  /* подвкладки админки — в одну строку с прокруткой */
+  #view-teacher .tabs{
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  #view-teacher .tabs::-webkit-scrollbar{ display: none; }
+
+  #view-teacher .dash-title{ font-size: 26px; }
+  #view-teacher .dash-subtitle{ font-size: 14px; margin-bottom: 18px; }
+
+  #view-teacher .panel{ padding: 18px; border-radius: 20px; }
+  #view-teacher .create-summary{ position: static; }
+
+  /* 16px в полях — чтобы iPhone не приближал страницу при вводе */
+  #view-teacher select,
+  #view-teacher input[type=text],
+  #view-teacher input[type=password],
+  #view-teacher input[type=date],
+  #view-teacher textarea{
+    font-size: 16px !important;
+    min-height: 46px;
+  }
+
+  /* кнопки под палец */
+  #view-teacher button.primary,
+  #view-teacher button.secondary{
+    min-height: 46px;
+  }
+
+  #view-teacher button.small{
+    min-height: 38px;
+  }
+
+  #view-teacher .user-bar{
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  #view-teacher .cert-test-row{
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}

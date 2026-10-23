@@ -1,0 +1,42 @@
+/* theme/apple/variables.css — Переменные цветов (тёмная тема по умолчанию) */
+/* ---------------------------------------------------------
+   theme/apple.css
+   Стиль «матовое стекло» (Apple / iOS / macOS) для кабинета репетитора.
+   Действует ТОЛЬКО внутри #view-teacher. Подключается последним.
+   Чтобы отключить дизайн — удалите <link> на этот файл в index.html.
+--------------------------------------------------------- */
+
+/* ============ ПЕРЕМЕННЫЕ (тёмная тема по умолчанию) ============ */
+#view-teacher{
+  --serif: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', system-ui, Helvetica, Arial, sans-serif;
+  --sans:  -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, Helvetica, Arial, sans-serif;
+
+  --glass:         rgba(30, 52, 64, 0.52);
+  --glass-strong:  rgba(40, 68, 82, 0.72);
+  --glass-hover:   rgba(255, 255, 255, 0.08);
+  --glass-border:  rgba(255, 255, 255, 0.14);
+  --glass-shine:   rgba(255, 255, 255, 0.16);
+  --field:         rgba(255, 255, 255, 0.07);
+  --seg-active:    rgba(255, 255, 255, 0.18);
+  --glass-shadow:  0 10px 34px rgba(0, 0, 0, 0.30);
+  --blur:          blur(22px) saturate(170%);
+
+  --r-lg: 22px;
+  --r-md: 14px;
+  --r-sm: 10px;
+
+  color-scheme: dark;
+}
+
+[data-theme="light"] #view-teacher{
+  --glass:         rgba(255, 255, 255, 0.58);
+  --glass-strong:  rgba(255, 255, 255, 0.82);
+  --glass-hover:   rgba(0, 0, 0, 0.05);
+  --glass-border:  rgba(255, 255, 255, 0.85);
+  --glass-shine:   rgba(255, 255, 255, 0.9);
+  --field:         rgba(255, 255, 255, 0.7);
+  --seg-active:    #ffffff;
+  --glass-shadow:  0 10px 34px rgba(90, 70, 30, 0.14);
+
+  color-scheme: light;
+}

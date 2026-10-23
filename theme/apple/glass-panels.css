@@ -1,0 +1,58 @@
+/* theme/apple/glass-panels.css — Стеклянные карточки и панели */
+/* ============ СТЕКЛЯННЫЕ КАРТОЧКИ И ПАНЕЛИ ============ */
+#view-teacher .panel,
+#view-teacher .step-card,
+#view-teacher .create-summary,
+#view-teacher .user-bar,
+#view-teacher .info-card,
+#view-teacher .info-row,
+#view-teacher .stat-card,
+#view-teacher .student-card,
+#view-teacher .cert-student-card{
+  background: var(--glass);
+  -webkit-backdrop-filter: var(--blur);
+  backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-shine);
+}
+
+#view-teacher .panel{ padding: 26px; }
+#view-teacher .step-card{ padding: 18px; border-radius: 18px; }
+#view-teacher .create-summary{ padding: 22px; top: 16px; }
+#view-teacher .student-card,
+#view-teacher .cert-student-card{ padding: 18px 20px; }
+
+#view-teacher .user-bar{
+  border-radius: 16px;
+  padding: 11px 18px;
+}
+
+#view-teacher .step-card-icon{
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(224, 169, 76, 0.30), rgba(224, 169, 76, 0.10));
+  box-shadow: inset 0 1px 0 var(--glass-shine);
+}
+
+#view-teacher .step-card-body label{
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+
+#view-teacher .section-card,
+#view-teacher .cert-test-row{
+  border-radius: var(--r-md);
+}
+
+#view-teacher .section-card{
+  background: var(--field);
+  border: 1px solid var(--glass-border);
+  transition: transform .15s ease, background .2s ease, border-color .2s ease;
+}
+
+#view-teacher .section-card:hover{
+  transform: translateY(-2px);
+}

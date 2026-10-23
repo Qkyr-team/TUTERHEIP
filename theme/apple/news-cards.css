@@ -1,0 +1,23 @@
+/* theme/apple/news-cards.css — Новости («Информация») */
+/* Новости («Информация») — без цветной полоски, в стиле стекла */
+#view-teacher .info-card{
+  border-left: 1px solid var(--glass-border);
+  padding: 20px 22px;
+  margin-bottom: 14px;
+  transition: transform .2s ease;
+}
+
+#view-teacher .info-card:hover{
+  transform: translateY(-2px);
+}
+
+#view-teacher .info-title{
+  font-size: 18px;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+}
+
+#view-teacher .info-badge{
+  font-weight: 600;
+  padding: 4px 11px;
+}

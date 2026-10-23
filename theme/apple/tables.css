@@ -1,0 +1,28 @@
+/* theme/apple/tables.css — Таблицы */
+/* ============ ТАБЛИЦЫ ============ */
+#resultsTableWrap,
+#certsWrap{
+  overflow-x: auto;
+}
+
+#view-teacher table{
+  font-size: 14px;
+}
+
+#view-teacher th{
+  font-size: 11.5px;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+#view-teacher td{
+  border-bottom: 1px solid var(--glass-border);
+}
+
+#view-teacher tbody tr{
+  transition: background .15s ease;
+}
+
+#view-teacher tbody tr:hover{
+  background: var(--glass-hover);
+}

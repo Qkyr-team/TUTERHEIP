@@ -1,0 +1,8 @@
+/* theme/apple/fallback-no-blur.css — Запасной вариант без backdrop-filter */
+/* ============ ЗАПАСНОЙ ВАРИАНТ БЕЗ BACKDROP-FILTER ============ */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))){
+  #view-teacher{
+    --glass: var(--bg-panel);
+    --glass-strong: var(--bg-panel-2);
+  }
+}

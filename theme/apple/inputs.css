@@ -1,0 +1,44 @@
+/* theme/apple/inputs.css — Поля ввода */
+/* ============ ПОЛЯ ВВОДА ============ */
+#view-teacher select,
+#view-teacher input[type=text],
+#view-teacher input[type=password],
+#view-teacher input[type=date],
+#view-teacher textarea{
+  width: 100%;
+  background: var(--field);
+  border: 1px solid var(--glass-border);
+  color: var(--ink);
+  border-radius: var(--r-md);
+  padding: 12px 14px;
+  font-size: 15px;
+  font-family: var(--sans);
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+/* у textarea в разметке есть inline-стили — перекрываем их */
+#view-teacher textarea{
+  background: var(--field) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--r-md) !important;
+  padding: 12px 14px !important;
+  font-size: 15px !important;
+}
+
+#view-teacher select:focus,
+#view-teacher input:focus,
+#view-teacher textarea:focus{
+  outline: none;
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 4px rgba(224, 169, 76, 0.22);
+  background: var(--glass-strong) !important;
+}
+
+#view-teacher select{
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 38px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%238e8e93' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}

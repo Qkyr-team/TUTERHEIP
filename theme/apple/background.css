@@ -1,0 +1,25 @@
+/* theme/apple/background.css — Фон с цветными пятнами */
+/* ============ ФОН: мягкие цветные пятна под стеклом ============ */
+#view-teacher::before{
+  content: "";
+  position: fixed;
+  inset: -12%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(520px 420px at 12% 14%, rgba(224, 169, 76, 0.30), transparent 70%),
+    radial-gradient(560px 460px at 88% 20%, rgba(80, 130, 255, 0.24), transparent 70%),
+    radial-gradient(620px 520px at 72% 92%, rgba(111, 169, 138, 0.26), transparent 70%),
+    radial-gradient(480px 400px at 6% 86%,  rgba(190, 110, 200, 0.18), transparent 70%);
+  animation: glassDrift 28s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+[data-theme="light"] #view-teacher::before{
+  opacity: 0.75;
+}
+
+@keyframes glassDrift{
+  from{ transform: translate3d(-1.5%, -1%, 0) scale(1); }
+  to  { transform: translate3d(1.5%, 1.5%, 0) scale(1.06); }
+}
