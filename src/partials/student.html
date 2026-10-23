@@ -1,0 +1,50 @@
+<!-- STUDENT: прохождение теста -->
+  <section id="view-student" class="hidden">
+
+    <button class="back-link" onclick="goHome()">← на главную</button>
+
+    <div id="student-sections-picker" class="panel hidden">
+
+      <h2 id="pickerTestHeader"></h2>
+
+      <p class="hint" style="margin-bottom:14px;">
+        Выберите разделы, которые нужно пройти
+      </p>
+
+      <div class="section-all-toggle">
+
+        <input type="checkbox" id="pickerAllSections" checked onchange="toggleAllSectionCards()">
+
+        <label for="pickerAllSections" style="text-transform:none;font-size:13.5px;margin:0;">
+          Все разделы
+        </label>
+
+      </div>
+
+      <div class="section-cards" id="sectionCardsWrap"></div>
+
+      <p class="hint" id="pickerError"></p>
+
+      <button class="primary" onclick="confirmSectionSelection()">
+        Начать тест
+      </button>
+
+    </div>
+
+    <div id="student-test" class="panel hidden">
+
+      <h2 id="testHeader"></h2>
+
+      <div id="sectionProgress" class="hint" style="margin-bottom:14px;"></div>
+
+      <div id="testQuestions"></div>
+
+      <button class="primary" id="sectionNextBtn">
+        Далее
+      </button>
+
+    </div>
+
+    <div id="student-result" class="panel hidden"></div>
+
+  </section>

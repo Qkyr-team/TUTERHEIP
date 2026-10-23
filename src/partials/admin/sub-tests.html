@@ -1,0 +1,91 @@
+<!-- Tests bank -->
+            <div id="admin-tests" class="hidden">
+
+              <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px;margin-bottom:22px;">
+
+                <h3 style="font-family:var(--serif);font-size:15px;margin:0 0 8px;">
+                  📦 Массовый импорт тестов (JSON)
+                </h3>
+
+                <p class="hint" style="margin-bottom:8px;">
+                  Вставьте массив тестов в формате JSON (например, подготовленный из загруженного вами документа) и нажмите «Импортировать».
+                  Учебники, которых ещё нет в списке, будут добавлены автоматически.
+                </p>
+
+                <textarea id="bulkImportJson" rows="6"
+                  placeholder="[ { &quot;title&quot;: &quot;Unit 1A&quot;, &quot;book&quot;: &quot;Speak out&quot;, &quot;level&quot;: &quot;Beginner (A1)&quot;, &quot;topic&quot;: &quot;Hello&quot;, &quot;sections&quot;: [...] }, ... ]"
+                  style="width:100%;background:var(--bg-panel);border:1px solid var(--border);color:var(--ink);border-radius:7px;padding:10px;font-family:var(--mono);font-size:11.5px;"></textarea>
+
+                <button class="primary" style="margin-top:8px;" onclick="runBulkImport()">
+                  Импортировать
+                </button>
+
+                <p class="hint" id="bulkImportStatus"></p>
+
+              </div>
+
+              <h3 style="font-family:var(--serif);font-size:16px;">
+                Банк тестов
+              </h3>
+
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">
+
+                <select id="adminFilterBook" onchange="renderAdminTestsList()" style="max-width:180px;"></select>
+
+                <select id="adminFilterLevel" onchange="renderAdminTestsList()" style="max-width:180px;"></select>
+
+                <input type="text" id="adminFilterTopic" placeholder="Поиск по теме…" oninput="renderAdminTestsList()" style="max-width:200px;">
+
+              </div>
+
+              <div id="adminTestsListWrap"></div>
+
+              <h3 id="adminFormTitle" style="font-family:var(--serif);font-size:16px;margin-top:26px;">
+                Добавить новый тест
+              </h3>
+
+              <label for="adminTestTitle">Название теста</label>
+              <input type="text" id="adminTestTitle" placeholder="Например: Modal verbs">
+
+              <label for="adminTestBook">Учебник</label>
+              <select id="adminTestBook"></select>
+
+              <label for="adminTestLevel">Уровень</label>
+              <select id="adminTestLevel"></select>
+
+              <label for="adminTestTopic">Тема</label>
+              <input type="text" id="adminTestTopic" placeholder="Например: Present Simple">
+
+              <div id="adminSectionsWrap" style="margin-top:16px;"></div>
+
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin:12px 0;">
+
+                <button class="secondary small" onclick="addAdminSection('grammar')">
+                  + 📘 Grammar
+                </button>
+
+                <button class="secondary small" onclick="addAdminSection('vocabulary')">
+                  + 🔤 Vocabulary
+                </button>
+
+                <button class="secondary small" onclick="addAdminSection('reading')">
+                  + 📖 Reading
+                </button>
+
+                <button class="secondary small" onclick="addAdminSection('writing')">
+                  + ✍️ Writing
+                </button>
+
+              </div>
+
+              <button class="primary" id="saveAdminTestBtn" onclick="saveAdminTest()">
+                Сохранить тест
+              </button>
+
+              <button class="secondary hidden" id="cancelEditBtn" onclick="cancelEditTest()">
+                Отменить редактирование
+              </button>
+
+              <p class="hint" id="adminError"></p>
+
+            </div>

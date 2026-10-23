@@ -1,0 +1,58 @@
+<!-- ADMIN -->
+          <div id="teacher-admin" class="panel hidden">
+
+            <h2><span class="num">👑</span>Админ-панель</h2>
+
+            <div class="tabs" id="admin-subtabs">
+
+              <button class="tab-btn" data-subtab="dashboard" onclick="setAdminSubTab('dashboard')">
+                Dashboard
+              </button>
+
+              <button class="tab-btn" data-subtab="tests" onclick="setAdminSubTab('tests')">
+                Тесты
+              </button>
+
+              <button class="tab-btn" data-subtab="books" onclick="setAdminSubTab('books')">
+                Учебники
+              </button>
+
+              <button class="tab-btn" data-subtab="teachers" onclick="setAdminSubTab('teachers')">
+                Репетиторы
+              </button>
+
+              <button class="tab-btn" data-subtab="students" onclick="setAdminSubTab('students')">
+                Ученики
+              </button>
+
+              <button class="tab-btn" data-subtab="certificate" onclick="setAdminSubTab('certificate')">
+                Сертификат
+              </button>
+
+             <button class="tab-btn" data-subtab="news" onclick="setAdminSubTab('news')">
+                📢 Новости
+              </button>
+
+              <button class="tab-btn" data-subtab="platform" onclick="setAdminSubTab('platform')">
+                ⚙️ Настройки платформы
+              </button>
+
+            </div>
+
+            <!-- @include admin/sub-dashboard.html -->
+
+            <!-- @include admin/sub-tests.html -->
+
+            <!-- @include admin/sub-books.html -->
+
+            <!-- @include admin/sub-teachers.html -->
+
+            <!-- @include admin/sub-students.html -->
+
+            <!-- @include admin/sub-certificate.html -->
+
+            <!-- @include admin/sub-news.html -->
+
+            <!-- @include admin/sub-platform.html -->
+
+          </div>

@@ -1,0 +1,116 @@
+<!-- Students -->
+          <div id="teacher-students" class="hidden">
+
+            <h2 class="dash-title">Мои ученики</h2>
+
+            <button class="primary" onclick="toggleStudentForm()">
+              ➕ Добавить ученика
+            </button>
+
+            <div id="studentFormWrap" class="panel hidden" style="margin-top:16px;">
+
+              <h3 id="studentFormTitle" style="font-family:var(--serif);margin:0 0 14px;">
+                Новый ученик
+              </h3>
+
+              <label>Имя*</label>
+              <input type="text" id="studentFirstName" placeholder="Александр">
+
+              <label>Фамилия*</label>
+              <input type="text" id="studentLastName" placeholder="Петров">
+
+              <label>Класс</label>
+              <input type="text" id="studentGrade" placeholder="Например: 7">
+
+              <label>Родной язык</label>
+              <input type="text" id="studentNativeLang" placeholder="Например: русский">
+
+              <label>Цель обучения</label>
+              <select id="studentGoal">
+                <option value="">—</option>
+                <option>Подготовка к ОГЭ</option>
+                <option>Подготовка к ЕГЭ</option>
+                <option>Школьная программа</option>
+                <option>Разговорный английский</option>
+                <option>IELTS</option>
+                <option>TOEFL</option>
+                <option>Другое</option>
+              </select>
+
+              <h4 style="font-family:var(--serif);font-size:14px;margin:18px 0 4px;">
+                Контакты ученика
+              </h4>
+
+              <label>Телефон</label>
+              <input type="text" id="studentPhone" placeholder="+7 ...">
+
+              <label>Email</label>
+              <input type="text" id="studentEmail" placeholder="student@example.com">
+
+              <h4 style="font-family:var(--serif);font-size:14px;margin:18px 0 4px;">
+                Контакты родителя
+              </h4>
+
+              <label>Имя родителя</label>
+              <input type="text" id="parentName" placeholder="Имя Фамилия">
+
+              <label>Телефон родителя</label>
+              <input type="text" id="parentPhone" placeholder="+7 ...">
+
+              <label>Email родителя</label>
+              <input type="text" id="parentEmail" placeholder="parent@example.com">
+
+              <h4 style="font-family:var(--serif);font-size:14px;margin:18px 0 4px;">
+                Информация об обучении
+              </h4>
+
+              <label>Текущий уровень</label>
+              <select id="studentLevel">
+                <option value="">—</option>
+                <option>A0</option>
+                <option>A1</option>
+                <option>A2</option>
+                <option>B1</option>
+                <option>B2</option>
+                <option>C1</option>
+                <option>C2</option>
+              </select>
+
+              <label>Учебник</label>
+              <input type="text" id="studentTextbook" placeholder="Например: Speak out">
+
+              <label>Частота занятий</label>
+              <select id="studentFrequency">
+                <option value="">—</option>
+                <option>1 раз в неделю</option>
+                <option>2 раза в неделю</option>
+                <option>3 раза в неделю</option>
+                <option>Своя</option>
+              </select>
+
+              <label>Продолжительность урока</label>
+              <select id="studentDuration">
+                <option value="">—</option>
+                <option>30 минут</option>
+                <option>45 минут</option>
+                <option>60 минут</option>
+                <option>90 минут</option>
+              </select>
+
+              <label>Заметки</label>
+              <textarea id="studentNotes" rows="4"
+                placeholder="Например: часто путает времена, любит игровые задания…"
+                style="width:100%;background:var(--bg);border:1px solid var(--border);color:var(--ink);border-radius:7px;padding:10px;font-family:var(--sans);font-size:14px;"></textarea>
+
+              <div style="margin-top:16px;">
+                <button class="secondary" onclick="cancelStudentForm()">Отмена</button>
+                <button class="primary" onclick="saveStudentCard()">Сохранить ученика</button>
+              </div>
+
+              <p class="hint" id="studentFormError"></p>
+
+            </div>
+
+            <div id="studentCardsWrap" style="margin-top:20px;"></div>
+
+          </div>

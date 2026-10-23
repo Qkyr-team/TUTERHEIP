@@ -1,0 +1,102 @@
+<!-- AUTH: одно окно с вкладками репетитор/ученик -->
+    <div class="panel" id="authSection">
+      <div class="tabs">
+        <button class="tab-btn active" id="roleTabTeacher" onclick="selectRole('teacher')">📘 Я — репетитор</button>
+        <button class="tab-btn" id="roleTabStudent" onclick="selectRole('student')">✏️ Я — ученик</button>
+      </div>
+
+      <!-- TEACHER: обязательный вход/регистрация -->
+      <div id="homeTeacherPanel">
+
+        <!-- Уже вошли — показываем это вместо формы входа -->
+        <div id="teacherAlreadyLoggedIn" class="hidden">
+          <h2>С возвращением!</h2>
+          <p class="hint" style="margin-bottom:16px;">Вы вошли как <b id="teacherAlreadyEmail"></b></p>
+          <button class="primary" style="width:100%;" onclick="goTeacher()">Перейти в кабинет</button>
+          <button class="secondary" style="width:100%;margin-top:10px;" onclick="signOutTeacher()">Выйти из аккаунта</button>
+        </div>
+
+        <div id="teacherLoginForm">
+          <h2 id="authTitle">Вход в кабинет репетитора</h2>
+
+          <button class="secondary" style="width:100%;margin-top:6px;" onclick="signInWithGoogle()">
+            Войти через Google
+          </button>
+
+          <div style="text-align:center;color:var(--ink-dim);font-size:12.5px;margin:16px 0;">— или по email —</div>
+
+          <label for="authEmail">Email</label>
+          <input type="text" id="authEmail" placeholder="you@example.com">
+
+          <label for="authPassword">Пароль</label>
+          <input type="password" id="authPassword" placeholder="Минимум 6 символов">
+
+          <button class="primary" id="authSubmitBtn" onclick="submitEmailAuth()">Войти</button>
+
+          <p class="hint" id="authError"></p>
+
+          <p class="hint" id="authSwitchWrap">
+            Нет аккаунта?
+            <a href="#" onclick="toggleAuthMode(event)">Зарегистрироваться</a>
+            <br>
+            <a href="#" onclick="resetPassword(event)">Забыли пароль?</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- STUDENT: необязательный вход + ввод кода -->
+      <div id="homeStudentPanel" class="hidden">
+        <div id="studentAuthLoggedOut">
+          <button class="secondary" style="width:100%;" onclick="toggleStudentAuth()">
+            Войти в аккаунт (по желанию) — чтобы видеть историю всех тестов и скачивать сертификаты
+          </button>
+
+          <div id="studentAuthForm" class="hidden" style="margin-top:16px;">
+            <button class="secondary" style="width:100%;" onclick="signInWithGoogleStudent()">Войти через Google</button>
+
+            <div style="text-align:center;color:var(--ink-dim);font-size:12.5px;margin:16px 0;">— или по email —</div>
+
+            <label for="stuEmail">Email</label>
+            <input type="text" id="stuEmail" placeholder="you@example.com">
+
+            <label for="stuPassword">Пароль</label>
+            <input type="password" id="stuPassword" placeholder="Минимум 6 символов">
+
+            <button class="primary" id="stuAuthSubmitBtn" onclick="submitStudentEmailAuth()">Войти</button>
+
+            <p class="hint" id="stuAuthError"></p>
+
+            <p class="hint" id="stuAuthSwitchWrap">
+              Нет аккаунта?
+              <a href="#" onclick="toggleStudentAuthMode(event)">Зарегистрироваться</a>
+            </p>
+          </div>
+        </div>
+
+        <div id="studentAuthLoggedIn" class="hidden">
+          <div class="user-bar">
+            <span id="studentEmailLabel"></span>
+            <button class="secondary small" onclick="signOutStudent()">Выйти</button>
+          </div>
+
+          <div id="homeVocabReminder" class="hidden" style="margin:12px 0;background:rgba(224,169,76,0.12);border:1px solid var(--accent);
+            border-radius:8px;padding:12px 14px;font-size:13.5px;display:flex;justify-content:space-between;align-items:center;gap:10px;">
+            <span id="homeVocabReminderText"></span>
+            <button class="primary small" onclick="goVocabStudent()">Повторить</button>
+          </div>
+
+          <button class="secondary" style="width:100%;margin:12px 0;" onclick="goVocabStudent()">📚 Лексика</button>
+
+          <div id="studentHistoryWrap"></div>
+        </div>
+
+        <h2 style="margin-top:22px;">Введите код</h2>
+
+        <label for="sCode">Код от репетитора</label>
+        <input type="text" id="sCode" placeholder="Например: 4F7K2Q" style="text-transform:uppercase;letter-spacing:2px;">
+
+        <button class="primary" onclick="startTestByCode()">Начать тест</button>
+
+        <p class="hint" id="sError"></p>
+      </div>
+    </div>

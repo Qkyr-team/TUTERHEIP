@@ -1,0 +1,32 @@
+<!-- Certificate template -->
+            <div id="admin-certificate" class="hidden">
+
+              <h3 style="font-family:var(--serif);font-size:16px;">
+                Дизайн сертификата
+              </h3>
+
+              <p class="hint" style="margin-bottom:14px;">
+                Загрузите своё изображение — оно станет фоном всех выдаваемых сертификатов.
+                Имя ученика, тест, результат и дата печатаются поверх картинки в тех же местах,
+                что и в стандартном дизайне, — оставьте там свободное место. Рекомендуемый размер: примерно 1000×700.
+              </p>
+
+              <div id="certTemplatePreviewWrap" style="margin-bottom:16px;"></div>
+
+              <label for="certTemplateFile">
+                Файл изображения (PNG/JPEG)
+              </label>
+
+              <input type="file" id="certTemplateFile" accept="image/*">
+
+              <button class="primary" onclick="uploadCertificateTemplate()">
+                Загрузить
+              </button>
+
+              <button class="secondary" onclick="resetCertificateTemplate()">
+                Вернуть стандартный дизайн
+              </button>
+
+              <p class="hint" id="certTemplateError"></p>
+
+            </div>

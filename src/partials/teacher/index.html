@@ -1,0 +1,55 @@
+<!-- TEACHER DASHBOARD -->
+  <section id="view-teacher" class="hidden">
+
+    <button class="back-link" onclick="goHome()">← на главную</button>
+
+    <div id="teacher-root">
+
+      <div class="user-bar">
+        <span id="teacherEmailLabel"></span>
+        <button class="secondary small" onclick="signOutTeacher()">Выйти</button>
+      </div>
+
+      <div id="teacherBlockedNotice" class="panel hidden">
+        <h2>Аккаунт заблокирован</h2>
+        <p>Обратитесь к администратору платформы.</p>
+      </div>
+
+      <div id="teacher-tabs-and-panels" class="dash-layout">
+
+        <!-- Затемнение под меню «Ещё» (только телефон) -->
+        <div class="dash-more-scrim" id="navMoreScrim" onclick="closeNavMore()"></div>
+
+        <!-- @include teacher/sidebar.html -->
+
+        <div class="dash-content">
+
+          <div class="breadcrumb">
+            Главная <span>›</span> <span id="dashBreadcrumbCurrent">Создать код</span>
+          </div>
+
+          <!-- @include teacher/tab-dashboard.html -->
+
+          <!-- @include teacher/tab-info.html -->
+
+          <!-- @include teacher/tab-create.html -->
+
+          <!-- @include teacher/tab-results.html -->
+
+          <!-- @include teacher/tab-certs.html -->
+
+          <!-- @include teacher/tab-students.html -->
+
+          <!-- @include teacher/tab-vocab.html -->
+
+          <!-- @include teacher/tab-account.html -->
+
+          <!-- @include admin/index.html -->
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>

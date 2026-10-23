@@ -1,0 +1,97 @@
+<!-- Create code -->
+          <div id="teacher-create">
+            <h2 class="dash-title">Создать код для ученика</h2>
+            <p class="dash-subtitle">Выберите тест и сгенерируйте код доступа</p>
+
+            <div class="create-grid">
+
+              <div class="create-form">
+
+                <div class="step-card">
+                  <div class="step-card-icon">📘</div>
+                  <div class="step-card-body">
+                    <label>1. Учебник</label>
+                    <p class="step-hint">Выберите учебник</p>
+                    <select id="tBook" onchange="onTeacherBookChange()"></select>
+                  </div>
+                </div>
+
+                <div class="step-card">
+                  <div class="step-card-icon">📶</div>
+                  <div class="step-card-body">
+                    <label>2. Уровень</label>
+                    <p class="step-hint">Выберите уровень</p>
+                    <select id="tLevel" onchange="onTeacherLevelChange()"></select>
+                  </div>
+                </div>
+
+                <div class="step-card">
+                  <div class="step-card-icon">📄</div>
+                  <div class="step-card-body">
+                    <label>3. Название теста</label>
+                    <p class="step-hint">Выберите готовый тест</p>
+                    <select id="tCourse" onchange="onTeacherTestChange()"></select>
+                  </div>
+                </div>
+
+                <div class="step-card">
+                  <div class="step-card-icon">🎯</div>
+                  <div class="step-card-body">
+                    <label>4. Тема</label>
+                    <p class="step-hint">Заполняется автоматически</p>
+                    <input type="text" id="tTopic" readonly placeholder="—">
+                  </div>
+                </div>
+
+                <div class="info-row" id="testInfoRow"></div>
+
+                <div id="teacherSectionPickerWrap" class="hidden">
+
+                  <label>Разделы теста</label>
+
+                  <p class="step-hint">
+                    Выберите, какие разделы получит ученик по этому коду
+                  </p>
+
+                  <div class="section-all-toggle">
+                    <input type="checkbox" id="tAllSections" checked onchange="toggleAllTeacherSectionCards()">
+                    <label for="tAllSections" style="text-transform:none;font-size:13.5px;margin:0;">
+                      Все разделы
+                    </label>
+                  </div>
+
+                  <div class="section-cards" id="teacherSectionCardsWrap"></div>
+
+                </div>
+
+                <div class="step-card">
+                  <div class="step-card-icon">👤</div>
+                  <div class="step-card-body">
+                    <label>5. Имя ученика</label>
+                    <p class="step-hint">Укажите имя и фамилию ученика</p>
+                    <input type="text" id="tName" placeholder="Александр Петров">
+                  </div>
+                </div>
+
+                <button class="primary" style="width:100%;" onclick="createCode()">
+                  🔗 Сгенерировать код
+                </button>
+
+                <div id="codeResult" class="code-reveal hidden">
+                  <div class="meta">Код доступа для ученика</div>
+                  <div class="code" id="codeValue">—</div>
+                  <div class="meta" id="codeMeta"></div>
+                </div>
+
+              </div>
+
+              <div class="create-summary">
+                <h4>Ваш тест для ученика</h4>
+                <div id="createSummaryWrap"></div>
+                <p class="summary-note">
+                  ✅ После генерации кода отправьте его ученику для доступа к тесту
+                </p>
+              </div>
+
+            </div>
+          </div>

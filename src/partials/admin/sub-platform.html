@@ -1,0 +1,106 @@
+<!-- Platform settings -->
+            <div id="admin-platform" class="hidden">
+
+              <h3 style="font-family:var(--serif);font-size:16px;">
+                Бренд
+              </h3>
+
+              <label>Название платформы</label>
+              <input type="text" id="setBrandName">
+
+              <label>Подпись под названием</label>
+              <input type="text" id="setBrandTagline">
+
+              <h3 style="font-family:var(--serif);font-size:16px;margin-top:22px;">
+                Главная страница
+              </h3>
+
+              <label>Заголовок (hero)</label>
+              <input type="text" id="setHeroHeadline">
+
+              <label>Описание под заголовком</label>
+              <textarea id="setHeroLead" rows="3"
+                style="width:100%;background:var(--bg);border:1px solid var(--border);color:var(--ink);border-radius:7px;padding:10px;font-family:var(--sans);font-size:14px;"></textarea>
+
+              <label>Бейдж над заголовком</label>
+              <input type="text" id="setHeroBadge1">
+
+              <label>Бейдж 1</label>
+              <input type="text" id="setHeroTag1">
+
+              <label>Бейдж 2</label>
+              <input type="text" id="setHeroTag2">
+
+              <label>Бейдж 3</label>
+              <input type="text" id="setHeroTag3">
+
+              <h3 style="font-family:var(--serif);font-size:16px;margin-top:22px;">
+                Контакты
+              </h3>
+
+              <label>Email в футере</label>
+              <input type="text" id="setFooterEmail">
+
+              <h3 style="font-family:var(--serif);font-size:16px;margin-top:22px;">
+                Уровни (A1–C2)
+              </h3>
+
+              <label>Уровень 1</label>
+              <input type="text" id="setLevel0">
+
+              <label>Уровень 2</label>
+              <input type="text" id="setLevel1">
+
+              <label>Уровень 3</label>
+              <input type="text" id="setLevel2">
+
+              <label>Уровень 4</label>
+              <input type="text" id="setLevel3">
+
+              <label>Уровень 5</label>
+              <input type="text" id="setLevel4">
+
+              <label>Уровень 6</label>
+              <input type="text" id="setLevel5">
+
+              <h3 style="font-family:var(--serif);font-size:16px;margin-top:22px;">
+                Цвет акцента
+              </h3>
+
+              <label>Основной цвет (кнопки, заголовки)</label>
+              <input type="color" id="setAccentColor" style="width:80px;height:40px;padding:2px;">
+
+              <h3 style="font-family:var(--serif);font-size:16px;margin-top:22px;">
+                Тексты сертификата
+              </h3>
+
+              <label>Заголовок, строка 1</label>
+              <input type="text" id="setCertTitle1">
+
+              <label>Заголовок, строка 2</label>
+              <input type="text" id="setCertTitle2">
+
+              <label>Подзаголовок</label>
+              <input type="text" id="setCertSubtitle">
+
+              <label>Текст о прохождении</label>
+              <input type="text" id="setCertCompletionText">
+
+              <label>Подпись роли (внизу слева)</label>
+              <input type="text" id="setCertRoleLabel">
+
+              <div style="margin-top:18px;">
+
+                <button class="secondary" onclick="resetPlatformSettingsForm()">
+                  Сбросить к стандартным
+                </button>
+
+                <button class="primary" onclick="savePlatformSettings()">
+                  Сохранить настройки
+                </button>
+
+              </div>
+
+              <p class="hint" id="platformSettingsMsg"></p>
+
+            </div>

@@ -1,0 +1,110 @@
+<!-- ЛЕКСИКА (ученик) -->
+  <section id="view-vocab" class="hidden">
+
+    <button class="back-link" onclick="goHome()">← на главную</button>
+
+    <div id="vocab-sets-list" class="panel">
+
+      <h2>Лексика</h2>
+
+      <p class="hint" id="vocabDueBanner"></p>
+
+      <div id="studentWordSetsWrap"></div>
+
+    </div>
+
+    <div id="vocab-mode-select" class="panel hidden">
+
+      <button class="back-link" onclick="backToVocabList()">
+        ← к наборам
+      </button>
+
+      <h2 id="vocabSetTitle"></h2>
+
+      <div class="section-cards">
+
+        <div class="section-card" onclick="startVocabMode('flashcards')">
+          <div class="sc-icon">🗂️</div>
+          <div class="sc-title">Карточки</div>
+          <div class="sc-desc">Слово → перевод</div>
+        </div>
+
+        <div class="section-card" onclick="startVocabMode('choice')">
+          <div class="sc-icon">✅</div>
+          <div class="sc-title">Выбор ответа</div>
+          <div class="sc-desc">4 варианта перевода</div>
+        </div>
+
+        <div class="section-card" onclick="startVocabMode('learn')">
+          <div class="sc-icon">✍️</div>
+          <div class="sc-title">Заучивание</div>
+          <div class="sc-desc">Введите перевод сами</div>
+        </div>
+
+        <div class="section-card" onclick="startVocabMode('truefalse')">
+          <div class="sc-icon">⚖️</div>
+          <div class="sc-title">Правда или ложь</div>
+          <div class="sc-desc">Слово + перевод — верно?</div>
+        </div>
+
+        <div class="section-card" onclick="startVocabMode('fillblank')">
+          <div class="sc-icon">📝</div>
+          <div class="sc-title">Заполни пропуск</div>
+          <div class="sc-desc">Слово в предложении</div>
+        </div>
+
+        <div class="section-card" onclick="startVocabMode('typeword')">
+          <div class="sc-icon">⌨️</div>
+          <div class="sc-title">Напечатай слово</div>
+          <div class="sc-desc">По переводу — слово на английском</div>
+        </div>
+
+        <div class="section-card" onclick="startVocabMode('oddoneout')">
+          <div class="sc-icon">🔎</div>
+          <div class="sc-title">Найди лишнее</div>
+          <div class="sc-desc">Слово из другой темы</div>
+        </div>
+
+        <div class="section-card" onclick="startVocabMode('memory')">
+          <div class="sc-icon">🧠</div>
+          <div class="sc-title">Memory</div>
+          <div class="sc-desc">Найдите пары слово-перевод</div>
+        </div>
+
+        <div class="section-card" onclick="startVocabMode('scramble')">
+          <div class="sc-icon">🔤</div>
+          <div class="sc-title">Собери слово</div>
+          <div class="sc-desc">Буквы перемешаны</div>
+        </div>
+
+        <div class="section-card" onclick="startVocabMode('speedquiz')">
+          <div class="sc-icon">⚡</div>
+          <div class="sc-title">Быстрый тест</div>
+          <div class="sc-desc">Максимум ответов за 60 сек</div>
+        </div>
+
+        <div class="section-card" onclick="startVocabMode('listen')">
+          <div class="sc-icon">🎧</div>
+          <div class="sc-title">Прослушай и выбери</div>
+          <div class="sc-desc">Аудио → перевод</div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div id="vocab-play" class="panel hidden">
+
+      <button class="back-link" onclick="backToVocabModeSelect()">
+        ← к режимам
+      </button>
+
+      <div id="vocabProgressLine" class="hint" style="margin-bottom:14px;"></div>
+
+      <div id="vocabPlayArea"></div>
+
+    </div>
+
+    <div id="vocab-result" class="panel hidden"></div>
+
+  </section>

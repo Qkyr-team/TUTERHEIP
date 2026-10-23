@@ -1,0 +1,69 @@
+<!-- Vocabulary -->
+          <div id="teacher-vocab" class="hidden">
+
+            <h2 class="dash-title">Лексика</h2>
+
+            <p class="dash-subtitle">
+              Наборы слов для изучения. Создавать и редактировать их может только администратор — репетитор их только просматривает.
+            </p>
+
+            <div id="vocabAdminControls" class="hidden">
+
+              <button class="primary" onclick="toggleWordSetForm()">
+                ➕ Добавить набор слов
+              </button>
+
+              <div id="wordSetFormWrap" class="panel hidden" style="margin-top:16px;">
+
+                <h3 id="wordSetFormTitle" style="font-family:var(--serif);margin:0 0 14px;">
+                  Новый набор слов
+                </h3>
+
+                <label>Название</label>
+                <input type="text" id="wsTitle" placeholder="Например: Еда и напитки">
+
+                <label>Уровень</label>
+                <select id="wsLevel">
+                  <option value="">—</option>
+                  <option>A1</option>
+                  <option>A2</option>
+                  <option>B1</option>
+                  <option>B2</option>
+                  <option>C1</option>
+                  <option>C2</option>
+                </select>
+
+                <label>Тема</label>
+                <input type="text" id="wsTopic" placeholder="Например: Food & Drinks">
+
+                <label>Описание (необязательно)</label>
+                <input type="text" id="wsDescription" placeholder="Краткое описание набора">
+
+                <label style="margin-top:14px;">Слова</label>
+                <div id="wsWordsWrap"></div>
+
+                <button class="secondary small" onclick="addWordRow()">
+                  + Добавить слово
+                </button>
+
+                <div style="margin-top:16px;">
+                  <label style="display:inline-flex;align-items:center;gap:8px;text-transform:none;letter-spacing:normal;">
+                    <input type="checkbox" id="wsPublished" checked style="width:auto;">
+                    Опубликован (виден репетиторам и ученикам)
+                  </label>
+                </div>
+
+                <div style="margin-top:16px;">
+                  <button class="secondary" onclick="cancelWordSetForm()">Отмена</button>
+                  <button class="primary" onclick="saveWordSet()">Сохранить набор</button>
+                </div>
+
+                <p class="hint" id="wordSetFormError"></p>
+
+              </div>
+
+            </div>
+
+            <div id="wordSetsListWrap" style="margin-top:20px;"></div>
+
+          </div>
