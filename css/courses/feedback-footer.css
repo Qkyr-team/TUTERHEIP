@@ -1,0 +1,22 @@
+/* css/courses/feedback-footer.css — Курсы: нижняя панель проверки */
+/* нижняя панель с проверкой */
+.crs-foot{
+  position:sticky; bottom:0; margin:0 -18px -18px; padding:14px 18px;
+  border-top:2px solid var(--border); background:var(--bg-panel);
+  display:flex; align-items:center; justify-content:space-between; gap:14px;
+  border-radius:0 0 var(--radius) var(--radius);
+}
+.crs-foot.ok { background:rgba(88,204,2,.18);  border-top-color:var(--crs-green); }
+.crs-foot.bad{ background:rgba(255,75,75,.16); border-top-color:var(--crs-red); }
+.crs-fb{ display:flex; flex-direction:column; gap:2px; font-size:14px; min-width:0; }
+.crs-fb b{ font-size:17px; }
+.crs-foot.ok  .crs-fb b{ color:var(--crs-green); }
+.crs-foot.bad .crs-fb b{ color:var(--crs-red); }
+.crs-btn{
+  margin-left:auto; min-width:150px; background:var(--crs-green); color:#fff; border:none;
+  border-bottom:4px solid var(--crs-green-dark); border-radius:14px; padding:13px 22px;
+  font-size:15px; font-weight:800; letter-spacing:.05em; text-transform:uppercase;
+  cursor:pointer; font-family:var(--sans);
+}
+.crs-btn:disabled{ background:var(--border); border-bottom-color:transparent; color:var(--ink-dim); cursor:not-allowed; }
+.crs-foot.bad .crs-btn{ background:var(--crs-red); border-bottom-color:#d33; }

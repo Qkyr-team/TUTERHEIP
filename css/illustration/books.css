@@ -1,0 +1,42 @@
+/* css/illustration/books.css — Иллюстрация: книги */
+.deco-books{
+  position:absolute;
+  right:-4%;
+  top:6%;
+  z-index:1;
+  width:120px;
+}
+
+.book{
+  height:22px;
+  border-radius:3px;
+  color:#f2ede0;
+  font-size:8px;
+  font-weight:700;
+  letter-spacing:0.4px;
+  display:flex;
+  align-items:center;
+  padding:0 10px;
+  box-shadow:0 6px 12px rgba(0,0,0,0.2);
+  margin-bottom:-4px;
+}
+
+.book.b1{
+  background:#2f4d63;
+  width:112px;
+  transform:rotate(-3deg);
+}
+
+.book.b2{
+  background:#8a3b34;
+  width:100px;
+  transform:rotate(-6deg);
+  margin-left:10px;
+}
+
+.book.b3{
+  background:#2e5c46;
+  width:118px;
+  transform:rotate(-2deg);
+  margin-left:-4px;
+}

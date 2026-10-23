@@ -1,0 +1,25 @@
+/* css/landing/cta-banner.css — Главная: призыв к действию */
+.cta-banner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+  background:var(--bg-panel);
+  border:1px solid var(--accent-dim);
+  border-radius:10px;
+  padding:22px 24px;
+  margin:36px 0;
+}
+
+.cta-banner h4{
+  font-family:var(--serif);
+  font-size:16px;
+  margin:0 0 4px;
+}
+
+.cta-banner p{
+  margin:0;
+  font-size:13px;
+  color:var(--ink-dim);
+}

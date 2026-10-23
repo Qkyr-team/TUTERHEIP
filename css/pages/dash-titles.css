@@ -1,0 +1,22 @@
+/* css/pages/dash-titles.css — Хлебные крошки и заголовки вкладок */
+.breadcrumb{
+  font-size:12px;
+  color:var(--ink-dim);
+  margin-bottom:12px;
+}
+
+.breadcrumb span{
+  margin:0 4px;
+}
+
+.dash-title{
+  font-family:var(--serif);
+  font-size:24px;
+  margin:0 0 4px;
+}
+
+.dash-subtitle{
+  color:var(--ink-dim);
+  font-size:13.5px;
+  margin:0 0 22px;
+}

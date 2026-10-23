@@ -1,0 +1,29 @@
+/* css/pages/cert-cards.css — Карточки сертификатов */
+/* ---------- STUDENTS / CERTIFICATES ---------- */
+
+.cert-student-card{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:14px 16px;
+  margin-bottom:12px;
+}
+
+.cert-student-card h4{
+  margin:0 0 10px;
+  font-family:var(--serif);
+  font-size:16px;
+}
+
+.cert-test-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:8px 0;
+  border-top:1px solid var(--border);
+  font-size:13.5px;
+}
+
+.cert-test-row:first-of-type{
+  border-top:none;
+}

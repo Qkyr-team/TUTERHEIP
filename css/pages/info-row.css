@@ -1,0 +1,28 @@
+/* css/pages/info-row.css — Строка информации о тесте */
+.info-row{
+  display:flex;
+  background:var(--bg-panel);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:14px 6px;
+  margin:0 0 14px;
+  gap:6px;
+  min-height:20px;
+}
+
+.info-row .info-item{
+  flex:1;
+  text-align:center;
+}
+
+.info-row .info-item b{
+  display:block;
+  font-family:var(--serif);
+  font-size:15px;
+  color:var(--accent);
+}
+
+.info-row .info-item span{
+  font-size:10px;
+  color:var(--ink-dim);
+}

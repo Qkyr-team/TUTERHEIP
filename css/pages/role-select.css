@@ -1,0 +1,49 @@
+/* css/pages/role-select.css — Выбор роли */
+/* ---------- ROLE SELECT ---------- */
+
+.roles{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:16px;
+  margin-top:10px;
+}
+
+.role-card{
+  background:var(--bg-panel);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:26px 20px;
+  cursor:pointer;
+  transition:transform .15s ease,border-color .15s ease,background .15s ease;
+  text-align:left;
+}
+
+.role-card:hover{
+  transform:translateY(-3px);
+  border-color:var(--accent-dim);
+  background:var(--bg-panel-2);
+}
+
+.role-card.active{
+  border-color:var(--accent);
+  background:var(--bg-panel-2);
+}
+
+.role-card .icon{
+  font-size:30px;
+  margin-bottom:10px;
+  display:block;
+}
+
+.role-card h3{
+  font-family:var(--serif);
+  margin:0 0 6px;
+  font-size:19px;
+}
+
+.role-card p{
+  margin:0;
+  color:var(--ink-dim);
+  font-size:13.5px;
+  line-height:1.5;
+}

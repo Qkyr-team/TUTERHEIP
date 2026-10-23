@@ -1,0 +1,52 @@
+/* css/pages/create-summary.css — «Создать код»: сводка справа */
+.create-summary{
+  background:var(--bg-panel);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:20px;
+  position:sticky;
+  top:20px;
+}
+
+.create-summary h4{
+  font-family:var(--serif);
+  margin:0 0 12px;
+  font-size:15px;
+}
+
+.summary-row{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  padding:10px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.summary-row:last-child{
+  border-bottom:none;
+}
+
+.summary-row .si{
+  font-size:16px;
+}
+
+.summary-row .sl{
+  font-size:10.5px;
+  color:var(--ink-dim);
+  display:block;
+}
+
+.summary-row .sv{
+  font-size:13px;
+  font-weight:600;
+}
+
+.summary-note{
+  margin-top:14px;
+  font-size:12px;
+  color:var(--green);
+  background:rgba(111,169,138,0.12);
+  border:1px solid var(--green);
+  border-radius:8px;
+  padding:10px;
+}

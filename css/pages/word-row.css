@@ -1,0 +1,14 @@
+/* css/pages/word-row.css — Строка слова в наборе */
+/* ---------- CREATE / WORDS / MEMORY ---------- */
+
+.word-row{
+  display:grid;
+  grid-template-columns:1fr 1fr 90px 1.3fr auto;
+  gap:8px;
+  margin-bottom:8px;
+  align-items:center;
+}
+
+.word-row input{
+  margin:0;
+}

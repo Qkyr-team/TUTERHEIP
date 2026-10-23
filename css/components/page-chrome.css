@@ -1,0 +1,36 @@
+/* css/components/page-chrome.css — Ссылка «назад», разделитель, панель пользователя */
+.back-link{
+  background:none;
+  border:none;
+  color:var(--ink-dim);
+  cursor:pointer;
+  font-size:13px;
+  padding:0;
+  margin-bottom:16px;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+
+.back-link:hover{
+  color:var(--accent);
+}
+
+.chalk-rule{
+  border:none;
+  border-top:2px dashed var(--border);
+  margin:18px 0;
+}
+
+.user-bar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:var(--bg-panel);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:10px 16px;
+  margin-bottom:16px;
+  font-size:13px;
+  color:var(--ink-dim);
+}

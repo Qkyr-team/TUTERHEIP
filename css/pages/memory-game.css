@@ -1,0 +1,37 @@
+/* css/pages/memory-game.css — Игра Memory */
+.memory-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+}
+
+.memory-tile{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:14px 8px;
+  min-height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  font-size:13px;
+  cursor:pointer;
+  transition:transform .12s ease,background .12s ease;
+}
+
+.memory-tile.hidden-tile{
+  background:var(--bg-panel-2);
+  color:transparent;
+}
+
+.memory-tile.matched{
+  background:rgba(111,169,138,0.18);
+  border-color:var(--green);
+  color:var(--green);
+  cursor:default;
+}
+
+.memory-tile.flipped{
+  border-color:var(--accent);
+}

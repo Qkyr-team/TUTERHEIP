@@ -1,0 +1,23 @@
+/* css/components/result-banner.css — Баннер результата теста */
+.result-banner{
+  text-align:center;
+  padding:30px 20px;
+  border-radius:10px;
+  margin-bottom:10px;
+}
+
+.result-banner.good{
+  background:rgba(111,169,138,0.12);
+  border:1px solid var(--green);
+}
+
+.result-banner.bad{
+  background:rgba(192,83,62,0.12);
+  border:1px solid var(--red);
+}
+
+.result-banner .big{
+  font-family:var(--serif);
+  font-size:38px;
+  margin:6px 0;
+}

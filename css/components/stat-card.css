@@ -1,0 +1,26 @@
+/* css/components/stat-card.css — Карточка со статистикой */
+.stat-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+  gap:12px;
+}
+
+.stat-card{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:16px;
+  text-align:center;
+}
+
+.stat-card .stat-num{
+  font-family:var(--serif);
+  font-size:28px;
+  color:var(--accent);
+}
+
+.stat-card .stat-label{
+  font-size:12px;
+  color:var(--ink-dim);
+  margin-top:4px;
+}

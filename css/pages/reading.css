@@ -1,0 +1,21 @@
+/* css/pages/reading.css — Раздел Reading */
+/* ---------- READING ---------- */
+
+.reading-layout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+  align-items:start;
+}
+
+.reading-text-panel{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:18px;
+  max-height:520px;
+  overflow-y:auto;
+  line-height:1.7;
+  font-size:14.5px;
+  white-space:pre-wrap;
+}
