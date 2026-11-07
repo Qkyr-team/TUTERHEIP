@@ -1,0 +1,20 @@
+/* css/base/hints.css — Подсказки (.hint) и сноски */
+.hint{
+  color:var(--ink-dim);
+  font-size:12.5px;
+  margin-top:6px;
+}
+
+.hint a{
+  color:var(--accent);
+  text-decoration:underline;
+  cursor:pointer;
+}
+
+.footer-note{
+  margin-top:36px;
+  color:var(--ink-dim);
+  font-size:12px;
+  text-align:center;
+  line-height:1.6;
+}

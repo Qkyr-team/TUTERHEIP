@@ -1,0 +1,46 @@
+/* css/illustration/plant.css — Иллюстрация: растение */
+.deco-plant{
+  position:absolute;
+  left:-6%;
+  bottom:6%;
+  z-index:3;
+  width:70px;
+  height:100px;
+}
+
+.plant-pot{
+  position:absolute;
+  bottom:0;
+  left:12px;
+  width:44px;
+  height:34px;
+  background:linear-gradient(#c07a4a,#a1602f);
+  border-radius:4px 4px 10px 10px;
+}
+
+.plant-leaf{
+  position:absolute;
+  width:26px;
+  height:40px;
+  background:#4f8f5e;
+  border-radius:50% 50% 50% 0;
+  bottom:26px;
+}
+
+.plant-leaf.l1{
+  left:6px;
+  transform:rotate(-25deg);
+  background:#5b9a67;
+}
+
+.plant-leaf.l2{
+  left:22px;
+  transform:rotate(6deg);
+  background:#3f7d5c;
+}
+
+.plant-leaf.l3{
+  left:36px;
+  transform:rotate(30deg);
+  background:#5b9a67;
+}

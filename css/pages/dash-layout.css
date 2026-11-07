@@ -1,0 +1,52 @@
+/* css/pages/dash-layout.css — Каркас кабинета: боковое меню и контент */
+/* ---------- DASHBOARD ---------- */
+
+.dash-layout{
+  display:flex;
+  gap:26px;
+  align-items:flex-start;
+}
+
+.dash-sidebar{
+  width:200px;
+  flex-shrink:0;
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  background:var(--bg-panel);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:10px;
+  position:sticky;
+  top:20px;
+}
+
+.dash-nav-item{
+  display:block;
+  width:100%;
+  text-align:left;
+  background:none;
+  border:none;
+  color:var(--ink-dim);
+  padding:11px 14px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:13.5px;
+  font-family:var(--sans);
+}
+
+.dash-nav-item:hover{
+  background:var(--bg);
+  color:var(--ink);
+}
+
+.dash-nav-item.active{
+  background:var(--accent);
+  color:#1c1305;
+  font-weight:700;
+}
+
+.dash-content{
+  flex:1;
+  min-width:0;
+}

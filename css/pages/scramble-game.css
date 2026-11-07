@@ -1,0 +1,32 @@
+/* css/pages/scramble-game.css — Игра «Собери слово» */
+.scramble-letters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  justify-content:center;
+  margin:14px 0;
+}
+
+.scramble-letter{
+  background:var(--bg-panel);
+  border:1px solid var(--border);
+  border-radius:6px;
+  width:38px;
+  height:38px;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.scramble-letter:disabled{
+  opacity:0.25;
+  cursor:default;
+}
+
+.scramble-answer{
+  font-family:var(--mono);
+  font-size:20px;
+  letter-spacing:3px;
+  min-height:30px;
+  margin-bottom:10px;
+}

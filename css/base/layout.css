@@ -1,0 +1,30 @@
+/* css/base/layout.css — Основа страницы: html, body, .shell, .hidden */
+
+*{
+  box-sizing:border-box;
+}
+
+html,body{
+  margin:0;
+  padding:0;
+}
+
+body{
+  background:
+    radial-gradient(circle at 15% 10%, rgba(224,169,76,0.06), transparent 40%),
+    radial-gradient(circle at 85% 90%, rgba(111,169,138,0.06), transparent 45%),
+    var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  min-height:100vh;
+}
+
+.shell{
+  max-width:980px;
+  margin:0 auto;
+  padding:28px 20px 60px;
+}
+
+.hidden{
+  display:none !important;
+}

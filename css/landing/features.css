@@ -1,0 +1,42 @@
+/* css/landing/features.css — Главная: возможности */
+.section-title{
+  font-family:var(--serif);
+  font-size:23px;
+  text-align:center;
+  margin:40px 0 22px;
+}
+
+.section-title span{
+  color:var(--accent);
+}
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:14px;
+}
+
+.feature-card{
+  background:var(--bg-panel);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:20px;
+}
+
+.feature-card .fi{
+  font-size:22px;
+  margin-bottom:10px;
+}
+
+.feature-card h4{
+  font-family:var(--serif);
+  font-size:15px;
+  margin:0 0 6px;
+}
+
+.feature-card p{
+  margin:0;
+  font-size:13px;
+  color:var(--ink-dim);
+  line-height:1.5;
+}

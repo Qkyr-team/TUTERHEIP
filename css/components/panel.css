@@ -1,0 +1,20 @@
+/* css/components/panel.css — Панель (белый блок) */
+.panel{
+  background:var(--bg-panel);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:24px;
+}
+
+.panel h2{
+  font-family:var(--serif);
+  margin-top:0;
+  font-size:20px;
+}
+
+.panel h2 .num{
+  color:var(--accent);
+  font-family:var(--mono);
+  font-size:15px;
+  margin-right:8px;
+}

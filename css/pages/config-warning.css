@@ -1,0 +1,20 @@
+/* css/pages/config-warning.css — Предупреждение о базе данных */
+/* ---------- CONFIG ---------- */
+
+.config-warning{
+  background:rgba(192,83,62,0.15);
+  border:1px solid var(--red);
+  color:#f3d9d3;
+  padding:14px 16px;
+  border-radius:8px;
+  font-size:13px;
+  line-height:1.6;
+  margin-bottom:20px;
+}
+
+.config-warning code{
+  background:rgba(0,0,0,0.25);
+  padding:1px 6px;
+  border-radius:4px;
+  font-family:var(--mono);
+}

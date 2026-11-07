@@ -1,0 +1,37 @@
+/* css/pages/writing.css — Раздел Writing */
+/* ---------- WRITING ---------- */
+
+.writing-textarea{
+  width:100%;
+  min-height:220px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  color:var(--ink);
+  border-radius:8px;
+  padding:14px;
+  font-family:var(--sans);
+  font-size:14.5px;
+  line-height:1.6;
+  resize:vertical;
+}
+
+.word-count-badge{
+  display:inline-block;
+  margin-top:8px;
+  font-size:12.5px;
+  padding:5px 12px;
+  border-radius:999px;
+  background:var(--bg-panel);
+  border:1px solid var(--border);
+  color:var(--ink-dim);
+}
+
+.word-count-badge.ok{
+  color:var(--green);
+  border-color:var(--green);
+}
+
+.word-count-badge.bad{
+  color:var(--red);
+  border-color:var(--red);
+}

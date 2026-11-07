@@ -1,0 +1,14 @@
+/* css/pages/speed-quiz.css — Игра «Быстрый тест» */
+.speed-timer-bar{
+  height:6px;
+  background:var(--bg);
+  border-radius:3px;
+  overflow:hidden;
+  margin-bottom:14px;
+}
+
+.speed-timer-fill{
+  height:100%;
+  background:var(--accent);
+  transition:width 1s linear;
+}

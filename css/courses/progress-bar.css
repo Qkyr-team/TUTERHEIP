@@ -1,0 +1,8 @@
+/* css/courses/progress-bar.css — Курсы: полоса прогресса */
+/* ===== УЧЕНИК: общие ===== */
+.crs-bar{ height:12px; background:var(--border); border-radius:99px; overflow:hidden; }
+.crs-bar i{
+  display:block; height:100%; width:0; background:var(--crs-green);
+  border-radius:99px; transition:width .35s ease;
+}
+.crs-bar.big{ flex:1; height:16px; }
