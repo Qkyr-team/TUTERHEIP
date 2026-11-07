@@ -1,6 +1,0 @@
-/* theme/apple/reduced-motion.css — Уменьшенные анимации */
-/* ============ УМЕНЬШЕННЫЕ АНИМАЦИИ ============ */
-@media (prefers-reduced-motion: reduce){
-  #view-teacher::before{ animation: none; }
-  #view-teacher *{ transition: none !important; }
-}
