@@ -1,0 +1,124 @@
+/* ---------------------------------------------------------
+   css/student-cabinet.css
+   Дополнительные стили кабинета ученика.
+   Основной вид (меню, карточки, стекло) берётся из
+   pages.css, components.css и theme/apple.css.
+--------------------------------------------------------- */
+
+#view-sdash .dash-content .panel{
+  margin-bottom: 18px;
+}
+
+#view-sdash .dash-content .panel h3{
+  margin-top: 0;
+}
+
+/* поле ввода кода */
+.sdash-code-input{
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.35em;
+  font-size: 24px !important;
+  font-weight: 700;
+  padding: 16px 12px !important;
+}
+.sdash-code-input::placeholder{
+  letter-spacing: 0.2em;
+  font-weight: 400;
+  opacity: 0.45;
+}
+
+/* «Как это работает» */
+.sdash-steps{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 6px;
+}
+.sdash-step{
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 13.5px;
+  color: var(--ink-dim);
+  line-height: 1.5;
+}
+.sdash-step b{
+  display: block;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+.sdash-step-num{
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #1c1305;
+  font-weight: 700;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* список результатов и разбор */
+.sdash-result{
+  border-bottom: 1px solid var(--border);
+}
+.sdash-result:last-child{
+  border-bottom: none;
+}
+.sdash-result > .dash-item{
+  border-bottom: none;
+}
+.sdash-detail{
+  padding: 2px 0 16px;
+}
+.sdash-detail-h{
+  font-size: 14px;
+  margin: 14px 0 8px;
+}
+.sdash-writing-text{
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 13.5px;
+  margin: 8px 0 10px;
+}
+.sdash-review{
+  border-left: 3px solid var(--accent);
+  background: rgba(224, 169, 76, 0.10);
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 13.5px;
+}
+.sdash-review p{
+  margin: 6px 0;
+}
+
+/* напоминание о словах */
+.sdash-due{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.sdash-due-text{
+  font-size: 14.5px;
+  font-weight: 600;
+}
+
+/* формы в аккаунте не растягиваем на всю ширину */
+.sdash-form-row{
+  max-width: 420px;
+}
+
+@media (max-width: 640px){
+  .sdash-steps{ grid-template-columns: 1fr; }
+  .sdash-due button{ width: 100%; }
+}
