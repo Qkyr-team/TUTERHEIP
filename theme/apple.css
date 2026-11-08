@@ -1,0 +1,674 @@
+/* ---------------------------------------------------------
+   theme/apple.css
+   Стиль «матовое стекло» (Apple / iOS / macOS)
+   для кабинета репетитора и ученика.
+--------------------------------------------------------- */
+
+/* ============ ПЕРЕМЕННЫЕ (тёмная тема по умолчанию) ============ */
+:is(#view-teacher, #view-sdash){
+  --serif: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', system-ui, Helvetica, Arial, sans-serif;
+  --sans:  -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', system-ui, Helvetica, Arial, sans-serif;
+
+  --glass:         rgba(30, 52, 64, 0.52);
+  --glass-strong:  rgba(40, 68, 82, 0.72);
+  --glass-hover:   rgba(255, 255, 255, 0.08);
+  --glass-border:  rgba(255, 255, 255, 0.14);
+  --glass-shine:   rgba(255, 255, 255, 0.16);
+  --field:         rgba(255, 255, 255, 0.07);
+  --seg-active:    rgba(255, 255, 255, 0.18);
+  --glass-shadow:  0 10px 34px rgba(0, 0, 0, 0.30);
+  --blur:          blur(22px) saturate(170%);
+
+  --r-lg: 22px;
+  --r-md: 14px;
+  --r-sm: 10px;
+
+  color-scheme: dark;
+}
+
+[data-theme="light"] :is(#view-teacher, #view-sdash){
+  --glass:         rgba(255, 255, 255, 0.58);
+  --glass-strong:  rgba(255, 255, 255, 0.82);
+  --glass-hover:   rgba(0, 0, 0, 0.05);
+  --glass-border:  rgba(255, 255, 255, 0.85);
+  --glass-shine:   rgba(255, 255, 255, 0.9);
+  --field:         rgba(255, 255, 255, 0.7);
+  --seg-active:    #ffffff;
+  --glass-shadow:  0 10px 34px rgba(90, 70, 30, 0.14);
+
+  color-scheme: light;
+}
+
+/* ============ ФОН: мягкие цветные пятна под стеклом ============ */
+:is(#view-teacher, #view-sdash)::before{
+  content: "";
+  position: fixed;
+  inset: -12%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(520px 420px at 12% 14%, rgba(224, 169, 76, 0.30), transparent 70%),
+    radial-gradient(560px 460px at 88% 20%, rgba(80, 130, 255, 0.24), transparent 70%),
+    radial-gradient(620px 520px at 72% 92%, rgba(111, 169, 138, 0.26), transparent 70%),
+    radial-gradient(480px 400px at 6% 86%,  rgba(190, 110, 200, 0.18), transparent 70%);
+  animation: glassDrift 28s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+[data-theme="light"] :is(#view-teacher, #view-sdash)::before{
+  opacity: 0.75;
+}
+
+@keyframes glassDrift{
+  from{ transform: translate3d(-1.5%, -1%, 0) scale(1); }
+  to  { transform: translate3d(1.5%, 1.5%, 0) scale(1.06); }
+}
+
+/* ============ БОКОВОЕ МЕНЮ ============ */
+:is(#view-teacher, #view-sdash) .dash-layout{
+  gap: 22px;
+}
+
+:is(#view-teacher, #view-sdash) .dash-sidebar{
+  width: 224px;
+  gap: 2px;
+  padding: 8px;
+  background: var(--glass);
+  -webkit-backdrop-filter: var(--blur);
+  backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-shine);
+  top: 16px;
+}
+
+:is(#view-teacher, #view-sdash) .dash-nav-item{
+  padding: 11px 14px;
+  border-radius: var(--r-md);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ink-dim);
+  transition: background .2s ease, color .2s ease, transform .15s ease, box-shadow .2s ease;
+}
+
+:is(#view-teacher, #view-sdash) .dash-nav-item:hover{
+  background: var(--glass-hover);
+  color: var(--ink);
+}
+
+:is(#view-teacher, #view-sdash) .dash-nav-item:active{
+  transform: scale(0.97);
+}
+
+:is(#view-teacher, #view-sdash) .dash-nav-item.active{
+  background: var(--accent);
+  color: #1c1305;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(224, 169, 76, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* ============ ЗАГОЛОВКИ ============ */
+:is(#view-teacher, #view-sdash) .breadcrumb{
+  font-size: 12.5px;
+  letter-spacing: 0.01em;
+  margin-bottom: 8px;
+}
+
+:is(#view-teacher, #view-sdash) .dash-title{
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin: 0 0 6px;
+}
+
+:is(#view-teacher, #view-sdash) .dash-subtitle{
+  font-size: 15px;
+  margin: 0 0 24px;
+  letter-spacing: -0.01em;
+}
+
+:is(#view-teacher, #view-sdash) label{
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+/* ============ СТЕКЛЯННЫЕ КАРТОЧКИ И ПАНЕЛИ ============ */
+:is(#view-teacher, #view-sdash) .panel,
+:is(#view-teacher, #view-sdash) .step-card,
+:is(#view-teacher, #view-sdash) .create-summary,
+:is(#view-teacher, #view-sdash) .user-bar,
+:is(#view-teacher, #view-sdash) .info-card,
+:is(#view-teacher, #view-sdash) .info-row,
+:is(#view-teacher, #view-sdash) .stat-card,
+:is(#view-teacher, #view-sdash) .student-card,
+:is(#view-teacher, #view-sdash) .cert-student-card{
+  background: var(--glass);
+  -webkit-backdrop-filter: var(--blur);
+  backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--glass-shadow), inset 0 1px 0 var(--glass-shine);
+}
+
+:is(#view-teacher, #view-sdash) .panel{ padding: 26px; }
+:is(#view-teacher, #view-sdash) .step-card{ padding: 18px; border-radius: 18px; }
+:is(#view-teacher, #view-sdash) .create-summary{ padding: 22px; top: 16px; }
+:is(#view-teacher, #view-sdash) .student-card,
+:is(#view-teacher, #view-sdash) .cert-student-card{ padding: 18px 20px; }
+
+:is(#view-teacher, #view-sdash) .user-bar{
+  border-radius: 16px;
+  padding: 11px 18px;
+}
+
+:is(#view-teacher, #view-sdash) .step-card-icon{
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(224, 169, 76, 0.30), rgba(224, 169, 76, 0.10));
+  box-shadow: inset 0 1px 0 var(--glass-shine);
+}
+
+:is(#view-teacher, #view-sdash) .step-card-body label{
+  font-size: 14px;
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+
+:is(#view-teacher, #view-sdash) .section-card,
+:is(#view-teacher, #view-sdash) .cert-test-row{
+  border-radius: var(--r-md);
+}
+
+:is(#view-teacher, #view-sdash) .section-card{
+  background: var(--field);
+  border: 1px solid var(--glass-border);
+  transition: transform .15s ease, background .2s ease, border-color .2s ease;
+}
+
+:is(#view-teacher, #view-sdash) .section-card:hover{
+  transform: translateY(-2px);
+}
+
+/* Новости («Информация») — без цветной полоски */
+:is(#view-teacher, #view-sdash) .info-card{
+  border-left: 1px solid var(--glass-border);
+  padding: 20px 22px;
+  margin-bottom: 14px;
+  transition: transform .2s ease;
+}
+
+:is(#view-teacher, #view-sdash) .info-card:hover{
+  transform: translateY(-2px);
+}
+
+:is(#view-teacher, #view-sdash) .info-title{
+  font-size: 18px;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+}
+
+:is(#view-teacher, #view-sdash) .info-badge{
+  font-weight: 600;
+  padding: 4px 11px;
+}
+
+/* ============ ПОЛЯ ВВОДА ============ */
+:is(#view-teacher, #view-sdash) select,
+:is(#view-teacher, #view-sdash) input[type=text],
+:is(#view-teacher, #view-sdash) input[type=password],
+:is(#view-teacher, #view-sdash) input[type=date],
+:is(#view-teacher, #view-sdash) textarea{
+  width: 100%;
+  background: var(--field);
+  border: 1px solid var(--glass-border);
+  color: var(--ink);
+  border-radius: var(--r-md);
+  padding: 12px 14px;
+  font-size: 15px;
+  font-family: var(--sans);
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+:is(#view-teacher, #view-sdash) textarea{
+  background: var(--field) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--r-md) !important;
+  padding: 12px 14px !important;
+  font-size: 15px !important;
+}
+
+:is(#view-teacher, #view-sdash) select:focus,
+:is(#view-teacher, #view-sdash) input:focus,
+:is(#view-teacher, #view-sdash) textarea:focus{
+  outline: none;
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 4px rgba(224, 169, 76, 0.22);
+  background: var(--glass-strong) !important;
+}
+
+:is(#view-teacher, #view-sdash) select{
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 38px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%238e8e93' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+/* ============ КНОПКИ ============ */
+:is(#view-teacher, #view-sdash) button.primary{
+  background: var(--accent);
+  color: #1c1305;
+  border: none;
+  border-radius: var(--r-md);
+  padding: 13px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  box-shadow: 0 6px 18px rgba(224, 169, 76, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.38);
+  transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+:is(#view-teacher, #view-sdash) button.primary:hover{
+  filter: brightness(1.06);
+  box-shadow: 0 8px 22px rgba(224, 169, 76, 0.46), inset 0 1px 0 rgba(255, 255, 255, 0.38);
+}
+
+:is(#view-teacher, #view-sdash) button.primary:active{
+  transform: scale(0.97);
+}
+
+:is(#view-teacher, #view-sdash) button.secondary{
+  background: var(--glass);
+  -webkit-backdrop-filter: var(--blur);
+  backdrop-filter: var(--blur);
+  border: 1px solid var(--glass-border);
+  color: var(--ink);
+  border-radius: var(--r-md);
+  padding: 11px 20px;
+  font-size: 14.5px;
+  font-weight: 500;
+  box-shadow: inset 0 1px 0 var(--glass-shine);
+  transition: transform .15s ease, background .2s ease;
+}
+
+:is(#view-teacher, #view-sdash) button.secondary:hover{
+  background: var(--glass-strong);
+  border-color: var(--glass-border);
+}
+
+:is(#view-teacher, #view-sdash) button.secondary:active{
+  transform: scale(0.97);
+}
+
+:is(#view-teacher, #view-sdash) button.small{
+  padding: 7px 14px;
+  font-size: 13px;
+  border-radius: var(--r-sm);
+}
+
+:is(#view-teacher, #view-sdash) .back-link{
+  font-weight: 500;
+}
+
+/* ============ СЕГМЕНТИРОВАННЫЙ ПЕРЕКЛЮЧАТЕЛЬ ============ */
+:is(#view-teacher, #view-sdash) .tabs{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 4px;
+  max-width: 100%;
+  background: var(--field);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  margin-bottom: 22px;
+}
+
+:is(#view-teacher, #view-sdash) .tab-btn{
+  flex-shrink: 0;
+  white-space: nowrap;
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  padding: 9px 15px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink-dim);
+  transition: background .2s ease, color .2s ease, box-shadow .2s ease;
+}
+
+:is(#view-teacher, #view-sdash) .tab-btn:hover{
+  color: var(--ink);
+  border: none;
+}
+
+:is(#view-teacher, #view-sdash) .tab-btn.active{
+  background: var(--seg-active);
+  color: var(--ink);
+  font-weight: 600;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18), inset 0 1px 0 var(--glass-shine);
+}
+
+[data-theme="light"] :is(#view-teacher, #view-sdash) .tab-btn.active{
+  color: #1c1c1e;
+}
+
+/* ============ ТАБЛИЦЫ ============ */
+#resultsTableWrap,
+#certsWrap{
+  overflow-x: auto;
+}
+
+:is(#view-teacher, #view-sdash) table{
+  font-size: 14px;
+}
+
+:is(#view-teacher, #view-sdash) th{
+  font-size: 11.5px;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+:is(#view-teacher, #view-sdash) td{
+  border-bottom: 1px solid var(--glass-border);
+}
+
+:is(#view-teacher, #view-sdash) tbody tr{
+  transition: background .15s ease;
+}
+
+:is(#view-teacher, #view-sdash) tbody tr:hover{
+  background: var(--glass-hover);
+}
+
+/* ============ ЗАПАСНОЙ ВАРИАНТ БЕЗ BACKDROP-FILTER ============ */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))){
+  :is(#view-teacher, #view-sdash){
+    --glass: var(--bg-panel);
+    --glass-strong: var(--bg-panel-2);
+  }
+}
+
+/* ============ УМЕНЬШЕННЫЕ АНИМАЦИИ ============ */
+@media (prefers-reduced-motion: reduce){
+  :is(#view-teacher, #view-sdash)::before{ animation: none; }
+  :is(#view-teacher, #view-sdash) *{ transition: none !important; }
+}
+
+/* ============ ТЕЛЕФОН ============ */
+@media (max-width: 760px){
+
+  :is(#view-teacher, #view-sdash) .dash-layout{
+    gap: 14px;
+  }
+
+  :is(#view-teacher, #view-sdash) .dash-sidebar{
+    position: sticky;
+    top: 8px;
+    z-index: 30;
+    width: 100%;
+    flex-direction: row;
+    gap: 4px;
+    padding: 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    border-radius: 20px;
+  }
+
+  :is(#view-teacher, #view-sdash) .dash-sidebar::-webkit-scrollbar{ display: none; }
+
+  :is(#view-teacher, #view-sdash) .dash-nav-item{
+    width: auto;
+    flex-shrink: 0;
+    white-space: nowrap;
+    padding: 11px 15px;
+    border-radius: 14px;
+  }
+
+  :is(#view-teacher, #view-sdash) .tabs{
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  :is(#view-teacher, #view-sdash) .tabs::-webkit-scrollbar{ display: none; }
+
+  :is(#view-teacher, #view-sdash) .dash-title{ font-size: 26px; }
+  :is(#view-teacher, #view-sdash) .dash-subtitle{ font-size: 14px; margin-bottom: 18px; }
+
+  :is(#view-teacher, #view-sdash) .panel{ padding: 18px; border-radius: 20px; }
+  :is(#view-teacher, #view-sdash) .create-summary{ position: static; }
+
+  :is(#view-teacher, #view-sdash) select,
+  :is(#view-teacher, #view-sdash) input[type=text],
+  :is(#view-teacher, #view-sdash) input[type=password],
+  :is(#view-teacher, #view-sdash) input[type=date],
+  :is(#view-teacher, #view-sdash) textarea{
+    font-size: 16px !important;
+    min-height: 46px;
+  }
+
+  :is(#view-teacher, #view-sdash) button.primary,
+  :is(#view-teacher, #view-sdash) button.secondary{
+    min-height: 46px;
+  }
+
+  :is(#view-teacher, #view-sdash) button.small{
+    min-height: 38px;
+  }
+
+  :is(#view-teacher, #view-sdash) .user-bar{
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  :is(#view-teacher, #view-sdash) .cert-test-row{
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+/* =========================================================
+   МОБИЛЬНАЯ НАВИГАЦИЯ: нижняя панель + «Ещё»
+========================================================= */
+
+.dash-more-btn,
+.dash-more-scrim{
+  display: none;
+}
+
+@media (max-width: 760px){
+
+  :is(#view-teacher, #view-sdash) .dash-layout{
+    padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+  }
+
+  :is(#view-teacher, #view-sdash) .dash-sidebar{
+    position: fixed;
+    top: auto;
+    left: 8px;
+    right: 8px;
+    bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+    z-index: 60;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 2px;
+    padding: 6px;
+    overflow: visible;
+    border-radius: 24px;
+    background: var(--bg-panel);
+    background: color-mix(in srgb, var(--bg-panel) 95%, transparent);
+    transition: transform .2s ease, opacity .2s ease;
+  }
+
+  :is(#view-teacher, #view-sdash) .dash-sidebar.more-open{
+    max-height: calc(100vh - 24px);
+    max-height: calc(100dvh - 24px);
+    overflow-y: auto;
+  }
+
+  :is(#view-teacher, #view-sdash) .dash-sidebar.kbd-open{
+    transform: translateY(calc(100% + 24px));
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+  }
+
+  :is(#view-teacher, #view-sdash) .dash-nav-item{
+    order: 1;
+    flex: 0 0 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 48px;
+    padding: 10px 14px;
+    border-radius: 16px;
+    white-space: normal;
+    font-size: 15px;
+  }
+
+  :is(#view-teacher, #view-sdash) .dash-nav-item .nav-ico{
+    font-size: 20px;
+    line-height: 1;
+    width: 26px;
+    text-align: center;
+  }
+
+  :is(#view-teacher, #view-sdash) .dash-nav-item.nav-more{
+    display: none;
+  }
+
+  :is(#view-teacher, #view-sdash) .dash-sidebar.more-open .dash-nav-item.nav-more{
+    display: flex;
+  }
+
+  :is(#view-teacher, #view-sdash) .dash-nav-item.nav-main,
+  :is(#view-teacher, #view-sdash) .dash-more-btn{
+    order: 2;
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+    min-height: 60px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    padding: 7px 1px;
+    border-radius: 18px;
+    font-size: 10px;
+    text-align: center;
+  }
+
+  :is(#view-teacher, #view-sdash) .dash-nav-item.nav-main .nav-ico,
+  :is(#view-teacher, #view-sdash) .dash-more-btn .nav-ico{
+    width: auto;
+  }
+
+  :is(#view-teacher, #view-sdash) .dash-nav-item.nav-main .nav-lbl,
+  :is(#view-teacher, #view-sdash) .dash-more-btn .nav-lbl{
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: normal;
+    word-break: normal;
+    line-height: 1.15;
+    font-size: 10px;
+    letter-spacing: -0.02em;
+  }
+
+  :is(#view-teacher, #view-sdash) .dash-more-btn{
+    position: relative;
+    display: flex;
+    background: none;
+    border: none;
+    color: var(--ink-dim);
+    font-family: var(--sans);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: background .2s ease, color .2s ease, transform .15s ease;
+  }
+
+  :is(#view-teacher, #view-sdash) .dash-more-btn:active{
+    transform: scale(0.97);
+  }
+
+  :is(#view-teacher, #view-sdash) .dash-more-btn[aria-expanded="true"]{
+    background: var(--glass-hover);
+    color: var(--ink);
+  }
+
+  :is(#view-teacher, #view-sdash) .dash-more-btn.has-active{
+    color: var(--ink);
+  }
+
+  :is(#view-teacher, #view-sdash) .dash-more-btn.has-active::after{
+    content: '';
+    position: absolute;
+    top: 9px;
+    left: calc(50% + 10px);
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  :is(#view-teacher, #view-sdash) .dash-nav-item:focus-visible,
+  :is(#view-teacher, #view-sdash) .dash-more-btn:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+
+  .dash-more-scrim{
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 55;
+    background: rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+  }
+
+  .dash-more-scrim.is-open{
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Уведомления: кабинет репетитора и ученика */
+  body:has(:is(#view-teacher, #view-sdash):not(.hidden) .dash-layout:not(.hidden)) #toastWrap{
+    bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+    left: 12px;
+    right: 12px;
+    align-items: flex-end;
+  }
+}
+
+/* совсем узкие экраны (320px) */
+@media (max-width: 340px){
+  :is(#view-teacher, #view-sdash) .dash-sidebar{
+    left: 4px;
+    right: 4px;
+    padding: 4px;
+    gap: 0;
+  }
+
+  :is(#view-teacher, #view-sdash) .dash-nav-item.nav-main .nav-lbl,
+  :is(#view-teacher, #view-sdash) .dash-more-btn .nav-lbl{
+    letter-spacing: -0.03em;
+  }
+}
+
+@media (max-width: 760px) and (prefers-reduced-motion: reduce){
+  :is(#view-teacher, #view-sdash) .dash-sidebar,
+  .dash-more-scrim{
+    transition: none !important;
+  }
+}
